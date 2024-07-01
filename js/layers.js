@@ -25,7 +25,7 @@ addLayer("p", {
 		title: "this is useless",
 		description: "buy this and you will have bought this",
 		cost: new Decimal(1),
-		effect() {return new Decimal(1.02)},
+		effect() {return new Decimal(100)},
 		effectDisplay() {return effect()},
 	    },
     },
