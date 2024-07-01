@@ -23,7 +23,7 @@ addLayer("p", {
     upgrades: {
 	    11: {
 		title: "this is useless",
-		description: "buy this and you will have bought this",
+		description: "buy this and you will have bought this <marquee>jk lol</marquee>",
 		cost: new Decimal(1),
 		effect() {return new Decimal(100)},
 		effectDisplay() {return effect()},
