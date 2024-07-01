@@ -25,6 +25,7 @@ addLayer("p", {
 		title: "this is useless",
 		description: "buy this and you will have bought this",
 		cost: new Decimal(100),
+		effect() {return new Decimal(2)},
 	    },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
