@@ -22,10 +22,11 @@ addLayer("p", {
     },
     upgrades: {
 	    11: {
+		title: "this is useless",
 		description: "buy this and you will have bought this",
 		cost: new Decimal(100),
 	    };
-    }
+    },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
