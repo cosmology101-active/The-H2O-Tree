@@ -4,7 +4,7 @@ addLayer("p", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(100),
+		points: new Decimal(0),
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -39,7 +39,7 @@ addLayer("p", {
 	    		},
     },
 	13: {
-		title: "pain...sigh",
+		title: "idk",
 		description: "buy this to support my effortsx2",
 		cost: new Decimal(5),
 		effect() {
