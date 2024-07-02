@@ -21,13 +21,16 @@ addLayer("p", {
         return new Decimal(1)
     },
     upgrades: {
-	    11: {
+	11: {
 		title: "this is useless",
 		description: "buy this and you will have bought this <marquee>jk lol</marquee>",
 		cost: new Decimal(1),
-		effect() {return new Decimal(100)},
-		//effectDisplay() {return effect()},
-	    },
+		effect() {
+        		return player[this.layer].points.add(1).pow(0.5)
+    			},
+    		effectDisplay() { 
+			return format(upgradeEffect(this.layer, this.id))+"x" },
+	    		},
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
