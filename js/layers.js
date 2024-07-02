@@ -45,6 +45,7 @@ addLayer("p", {
 		effect() {
         		return player.points.add(1).pow(0.15)
     			},
+		unlocked() { return hasUpgrade('p', 12)},
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
