@@ -39,9 +39,9 @@ addLayer("p", {
 	    		},
     },
 	13: {
-		title: "omg me degening worked",
-		description: "buy this to support my efforts",
-		cost: new Decimal(2),
+		title: "pain...sigh",
+		description: "buy this to support my effortsx2",
+		cost: new Decimal(5),
 		effect() {
         		return player.points.add(1).pow(0.15)
     			},
