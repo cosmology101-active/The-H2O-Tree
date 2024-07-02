@@ -29,7 +29,7 @@ addLayer("p", {
 	12: {
 		title: "omg me degening worked",
 		description: "buy this to support my efforts",
-		cost: new Decimal(5),
+		cost: new Decimal(2),
 		effect() {
         		return player[this.layer].points.add(1).pow(0.5)
     			},
