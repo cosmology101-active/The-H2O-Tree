@@ -41,7 +41,7 @@ addLayer("p", {
 	13: {
 		title: "idk",
 		description: "buy this to support my effortsx2",
-		cost: new Decimal(5),
+		cost: new Decimal(1),
 		effect() {
         		return player.points.add(1).pow(0.15)
     			},
