@@ -31,7 +31,7 @@ addLayer("e", {
 	12: {
 		title: "omg me degening worked",
 		description: "buy this to support my efforts",
-		cost: new Decimal(1),
+		cost: new Decimal(2),
 		effect() {
         		return player[this.layer].points.add(1).pow(0.5)
     			},
@@ -42,7 +42,7 @@ addLayer("e", {
 	13: {
 		title: "idk",
 		description: "it broke right?",
-		cost: new Decimal(1),
+		cost: new Decimal(3),
 		effect() {
         		return player.points.add(1).pow(0.15)
     			},
