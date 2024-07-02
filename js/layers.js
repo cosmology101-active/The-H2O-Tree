@@ -58,9 +58,7 @@ addLayer("e", {
     		"Other tab": {
         		content: [] {},
 		},
-    		},
-	},
-    },
+    	},
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "e", description: "E: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
