@@ -14,7 +14,8 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        let mult = new Decimal(1)
+        if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -36,6 +37,14 @@ addLayer("p", {
     		effectDisplay() { 
 			return format(upgradeEffect(this.layer, this.id))+"x" },
 	    		},
+    },
+	13: {
+		title: "omg me degening worked",
+		description: "buy this to support my efforts",
+		cost: new Decimal(2),
+		effect() {
+        		return player.points.add(1).pow(0.15)
+    			},
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
