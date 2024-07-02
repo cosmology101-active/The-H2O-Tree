@@ -44,7 +44,7 @@ addLayer("e", {
 		description: "it broke right?",
 		cost: new Decimal(3),
 		effect() {
-        		return player.points.add(1).pow(0.15)
+        		return player.points.add(1).pow(0.1)
     		},
 		effectDisplay() { 
 			return format(upgradeEffect(this.layer, this.id))+"x" 
