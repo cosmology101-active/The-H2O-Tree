@@ -27,29 +27,29 @@ addLayer("e", {
 		title: "this is useless",
 		description: "buy this and you will have bought this <marquee>jk lol</marquee>",
 		cost: new Decimal(1),
-    },
+    	},
 	12: {
 		title: "omg me degening worked",
 		description: "buy this to support my efforts",
 		cost: new Decimal(2),
 		effect() {
         		return player[this.layer].points.add(1).pow(0.5)
-    			},
+    		},
     		effectDisplay() { 
-			return format(upgradeEffect(this.layer, this.id))+"x" },
-	    		},
-    },
+			return format(upgradeEffect(this.layer, this.id))+"x" 
+		},
+	},
 	13: {
 		title: "idk",
 		description: "it broke right?",
 		cost: new Decimal(3),
 		effect() {
         		return player.points.add(1).pow(0.15)
-    			},
+    		},
 		effectDisplay() { 
-			return format(upgradeEffect(this.layer, this.id))+"x" },
-	    		},
-    },
+			return format(upgradeEffect(this.layer, this.id))+"x" 
+		},
+	},
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
