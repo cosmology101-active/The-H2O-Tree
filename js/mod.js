@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The H2O Tree",
 	id: "mymod",
 	author: "cosmology101 and bdcl",
-	pointsName: "vapor",
+	pointsName: "Vapor",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
