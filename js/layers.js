@@ -117,7 +117,7 @@ addLayer("w", {
     effect() {
         return player[this.layer].points.sqrt()
     },
-    effectDescription: "idk "+String(2),
+    effectDescription: "idk "+String(player.w.points.sqrt()),
     startData() { 
         return {
             unlocked: true,
