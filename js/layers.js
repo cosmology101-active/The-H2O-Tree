@@ -66,6 +66,22 @@ addLayer("h", {
                 return format(upgradeEffect(this.layer, this.id)) + "x" 
             },
         },
+        21: {
+            title: "Nuclear Fusion",
+            description: "Use fusion to create helium, fueling scientific discovery.",
+            cost: new Decimal(10),
+        },
+        22: {
+            title: "Stellar Fusion",
+            description: "Using the same process as a supernova this will unlock...",
+            cost: new Decimal(20),
+            effect() {
+                return player.points.add(1).pow(0.1)
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x" 
+            },
+        },
     },
     tabFormat: {
         "Hydrogen": {
@@ -82,6 +98,10 @@ addLayer("h", {
             ] // Removed extra {} here.
         },
         "Discovery": {
+            unlocked() {
+                if (hasUpgrade("h",21)) { return true }
+                else { return false }
+            }
             content: [] // Removed extra {} here.
         },
     },
@@ -151,7 +171,10 @@ addLayer("o", {
             },
         },
     },
-    layerShown() { return true }
+    layerShown() { 
+        if (hasUpgrade("h",22)) { return true }
+        else { return false }
+    }
 })
 addLayer("w", {
     name: "water", // This is optional, only used in a few places. If absent, it just uses the layer id.
