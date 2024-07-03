@@ -157,7 +157,7 @@ addLayer("w", {
             effectDescription: "keep hydrogen upgrades on reset",
             done() { return player.w.points.gte(5) }
         }
-    }
+    },
     hotkeys: [
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
