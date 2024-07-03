@@ -62,7 +62,6 @@ addLayer("e", {
                 "blank",
                 "display-text",
                 "blank",
-                ["toggle", ["e", "beep"]],
                 "milestones",
                 "blank",
                 "blank",
