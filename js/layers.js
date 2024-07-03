@@ -75,12 +75,6 @@ addLayer("h", {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(20),
-            effect() {
-                return player.points.add(1).pow(0.1)
-            },
-            effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x" 
-            },
         },
     },
     tabFormat: {
@@ -101,7 +95,7 @@ addLayer("h", {
             unlocked() {
                 if (hasUpgrade("h",21)) { return true }
                 else { return false }
-            }
+            },
             content: [] // Removed extra {} here.
         },
     },
