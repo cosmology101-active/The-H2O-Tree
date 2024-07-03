@@ -20,6 +20,9 @@ addLayer("h", {
         if (hasUpgrade('h', 13)) {
             mult = mult.times(upgradeEffect('h', 13))
         }
+        if (hasUpgrade('o', 11)) {
+            mult = mult.pow(upgradeEffect('o', 11))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
@@ -130,7 +133,7 @@ addLayer("o", {
             description: "Oxygen boosts hydrogen gain",
             cost: new Decimal(2),
             effect() {
-                return player.h.points.add(1).pow(0.25)
+                return player.o.points.add(1).pow(0.25)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
