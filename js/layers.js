@@ -200,5 +200,8 @@ addLayer("w", {
     hotkeys: [
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
-    layerShown() { return true }
+    layerShown() { 
+        if hasUpgrade("o",21) { return true }
+        else { return false }
+    }
 })
