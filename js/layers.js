@@ -119,7 +119,7 @@ addLayer("o", {
     ],
     doReset(resettingLayer){
         let keep=[];
-        if(hasMilestone("w",0)){
+        if(hasMilestone("w",1)){
         //    keep.push("milestones")
             keep.push("points")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
@@ -163,6 +163,11 @@ addLayer("w", {
             requirementDescription: "5 water",
             effectDescription: "keep hydrogen upgrades on reset",
             done() { return player.w.points.gte(5) }
+        }
+        1: {
+            requirementDescription: "10 water",
+            effectDescription: "keep oxygen on reset",
+            done() { return player.w.points.gte(10) }
         }
     },
     hotkeys: [
