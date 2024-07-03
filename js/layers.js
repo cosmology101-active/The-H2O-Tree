@@ -55,7 +55,7 @@ addLayer("e", {
         },
     },
     tabFormat: {
-        "Main tab": {
+        "Hydrogen": {
             content: [
                 "main-display",
                 "prestige-button",
@@ -69,7 +69,7 @@ addLayer("e", {
                 "upgrades"
             ] // Removed extra {} here.
         },
-        "Other tab": {
+        "Oxygen": {
             content: [] // Removed extra {} here.
         },
     },
