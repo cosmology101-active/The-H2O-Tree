@@ -64,7 +64,7 @@ addLayer("e", {
     			"blank",
     			"blank",
     			"upgrades"
-		] {
+		] 
 		
 		},
 	},
