@@ -123,7 +123,9 @@ addLayer("w", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account.
     resource: "water", // Name of prestige currency.
     baseResource: "hydrogen", // Name of resource prestige is based on.
-    baseAmount() { return new Decimal(player.h.points) }, // Get the current amount of baseResource.
+    baseAmount() { if (player.h.points.lt(player.o.points)) return player.h.points
+                 return player.o.points
+    }, // Get the current amount of baseResource.
     type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     exponent: 0.5, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
