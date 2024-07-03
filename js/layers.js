@@ -201,7 +201,7 @@ addLayer("w", {
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { 
-        if hasUpgrade("o",21) { return true }
+        if (hasUpgrade("o",21)) { return true }
         else { return false }
     }
 })
