@@ -74,7 +74,7 @@ addLayer("h", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
-        { key: "h", description: "H: Reset for prestige points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+        { key: "h", description: "H: hydrogen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { return true }
 })
@@ -105,7 +105,7 @@ addLayer("o", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
-        { key: "o", description: "O: Reset for prestige points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+        { key: "o", description: "O: Reset for oxygen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { return true }
 })
@@ -135,7 +135,7 @@ addLayer("w", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
-        { key: "w", description: "W: Reset for prestige points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+        { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { return true }
 })
