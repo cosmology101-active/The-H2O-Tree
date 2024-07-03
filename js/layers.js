@@ -30,6 +30,9 @@ addLayer("h", {
             title: "this is useless",
             description: "buy this and you will have bought this <marquee>jk lol it doubles vapor gain</marquee>",
             cost: new Decimal(1),
+            effectDisplay() { 
+                return "2x" 
+            },
         },
         12: {
             title: "omg me degening worked",
