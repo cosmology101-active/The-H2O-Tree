@@ -124,6 +124,30 @@ addLayer("o", {
             keep.push("points")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
+    upgrades: {
+        11: {
+            title: "Nuclear Fission",
+            description: "Oxygen boosts hydrogen gain",
+            cost: new Decimal(2),
+            effect() {
+                return player.h.points.add(1).pow(0.25)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+        },
+        21: {
+            title: "Unlock Next Layer",
+            description: "Unlocks next layer...what will it be?",
+            cost: new Decimal(3),
+            effect() {
+                return player.points.add(1).pow(0.1)
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x" 
+            },
+        },
+    },
     layerShown() { return true }
 })
 addLayer("w", {
