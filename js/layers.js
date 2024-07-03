@@ -115,9 +115,9 @@ addLayer("w", {
     position: 0, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     branches: ["h","o"],
     effect() {
-        return player[this.layer].points.sqrt()
+        return player[this.layer].points.sqrt().add(1)
     },
-    effectDescription() {return "idk "+String(player.w.points.sqrt())},
+    effectDescription() {return "which is boosting vapor generation by "+String(player.w.effect()) + "x"},
     startData() { 
         return {
             unlocked: true,
