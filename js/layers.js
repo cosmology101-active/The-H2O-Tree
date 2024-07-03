@@ -25,6 +25,13 @@ addLayer("h", {
     gainExp() { // Calculate the exponent on main currency from bonuses.
         return new Decimal(1)
     },
+    doReset(resettingLayer){
+        let keep=[];
+        if(hasMilestone("w",0)){
+        //    keep.push("milestones")
+            keep.push("upgrades")}
+        if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
+    },
     upgrades: {
         11: {
             title: "this is useless",
@@ -144,6 +151,13 @@ addLayer("w", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row).
+    milestones: {
+        0: {
+            requirementDescription: "5 water",
+            effectDescription: "keep hydrogen upgrades on reset",
+            done() { return player.w.points.gte(5) }
+        }
+    }
     hotkeys: [
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
