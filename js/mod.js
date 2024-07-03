@@ -20,6 +20,9 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.1</h3><br>
 		- Still testing.<br>
+		- Added Oxygen Layer.
+ 	<h3>v0.01</h3><br>
+		- Still testing.<br>
 		- Added three upgrades.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
@@ -43,9 +46,9 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (hasUpgrade('e', 11)) gain = gain.times(2)
-	if (hasUpgrade('e', 12)) gain = gain.times(upgradeEffect('e', 12))
-	if (hasUpgrade('e', 13)) gain = gain.times(upgradeEffect('e', 13))
+	if (hasUpgrade('h', 11)) gain = gain.times(2)
+	if (hasUpgrade('h', 12)) gain = gain.times(upgradeEffect('h', 12))
+	if (hasUpgrade('h', 13)) gain = gain.times(upgradeEffect('h', 13))
 	return gain
 }
 
