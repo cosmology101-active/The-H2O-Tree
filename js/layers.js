@@ -58,7 +58,7 @@ addLayer("e", {
         "Main tab": {
             content: [
                 "main-display",
-                ["prestige-button"],
+                "prestige-button",
                 "blank",
                 "display-text",
                 "blank",
