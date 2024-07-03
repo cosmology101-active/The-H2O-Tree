@@ -117,7 +117,7 @@ addLayer("w", {
     effect() {
         return player[this.layer].points.sqrt().add(1)
     },
-    effectDescription() {return "which is boosting vapor generation by "+String(player.w.effect()) + "x"},
+    effectDescription() {return "which is boosting vapor generation by "+String(player[this.layer].points.sqrt().add(1).multiply(100).round().divide(100)) + "x"},
     startData() { 
         return {
             unlocked: true,
