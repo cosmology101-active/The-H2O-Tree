@@ -117,6 +117,13 @@ addLayer("o", {
     hotkeys: [
         { key: "o", description: "O: Reset for oxygen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
+    doReset(resettingLayer){
+        let keep=[];
+        if(hasMilestone("w",0)){
+        //    keep.push("milestones")
+            keep.push("score")}
+        if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
+    },
     layerShown() { return true }
 })
 addLayer("w", {
