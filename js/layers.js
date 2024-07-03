@@ -28,12 +28,12 @@ addLayer("h", {
     upgrades: {
         11: {
             title: "this is useless",
-            description: "buy this and you will have bought this <marquee>jk lol</marquee>",
+            description: "buy this and you will have bought this <marquee>jk lol it doubles vapor gain</marquee>",
             cost: new Decimal(1),
         },
         12: {
             title: "omg me degening worked",
-            description: "buy this to support my efforts",
+            description: "buy this to support my efforts and boost vapor gain based on hydrogen",
             cost: new Decimal(2),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
@@ -44,7 +44,7 @@ addLayer("h", {
         },
         13: {
             title: "idk",
-            description: "it broke right?",
+            description: "it broke right? (lowers hydrogen requirement and boosts vapor gain based on vapor)",
             cost: new Decimal(3),
             effect() {
                 return player.points.add(1).pow(0.1)
