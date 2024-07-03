@@ -136,6 +136,7 @@ addLayer("w", {
     row: 1, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+        { key: "t", description: "T: its a secret", onPress() {console.log(player.hydrogen)} }
     ],
     layerShown() { return true }
 })
