@@ -121,7 +121,7 @@ addLayer("o", {
         let keep=[];
         if(hasMilestone("w",0)){
         //    keep.push("milestones")
-            keep.push("score")}
+            keep.push("points")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     layerShown() { return true }
