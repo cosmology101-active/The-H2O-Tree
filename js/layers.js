@@ -369,7 +369,7 @@ addLayer("co", {
     },
     requires: new Decimal(25), // Can be a function that takes requirement increases into account.
     resource: "carbon dioxide", // Name of prestige currency.
-    baseResource: "min(2c,o)", // Name of resource prestige is based on.
+    baseResource: "CO2", // Name of resource prestige is based on.
     baseAmount() { if (player.o.points.lt(player.c.points.multiply(2))) return player.o.points
                  return player.c.points.multiply(2) 
     },
