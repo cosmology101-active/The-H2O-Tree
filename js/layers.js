@@ -51,6 +51,9 @@ addLayer("h", {
             display() {
                 return "Reach 200 Hydrogen to unlock next reward"
             },
+            unlocked() {
+                return true
+            }
         },
     },
     upgrades: {
