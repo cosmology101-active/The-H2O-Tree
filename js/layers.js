@@ -34,7 +34,7 @@ addLayer("a", {
         12: {
             name: "Stellar Inspiration",
             done() {
-                if (hasAchievement("a",11) && (player.h.points >= 200)) {
+                if (hasAchievement("a",11) && (player.h.points.gte(200))) {
                     return true
                 }
                 else {
