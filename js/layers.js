@@ -34,14 +34,14 @@ addLayer("a", {
         12: {
             name: "Stellar Inspiration",
             done() {
-                if (hasAchievement("a",11) && (player.h.points.gte(200))) {
+                if (hasAchievement("a",11) && (player.h.points.gte(100))) {
                     return true
                 }
                 else {
                     return false
                 }
             },
-            tooltip: "Reach 200 hydrogen in scientific discovery.",
+            tooltip: "Reach 100 hydrogen in scientific discovery.",
             onComplete() {
                 player.a.points = player.a.points.add(1)
             },
@@ -116,7 +116,7 @@ addLayer("h", {
             },
             progress() { 
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
-                    return player.h.points.divide(200)
+                    return player.h.points.divide(100)
                 } else if (hasAchievement("a",12)) {
                     return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                 } else {
@@ -125,7 +125,7 @@ addLayer("h", {
             },
             display() {
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
-                    return "Reach 200 Hydrogen to unlock next reward"
+                    return "Reach 100 Hydrogen to unlock next reward"
                 } else if (hasAchievement("a",12)) {
                     return "Reach 300 Hydrogen and Oxygen to unlock next reward"
                 } else {
