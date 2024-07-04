@@ -136,9 +136,10 @@ addLayer("o", {
     ],
     doReset(resettingLayer){
         let keep=[];
-        if(hasMilestone("w",1)){
-        //    keep.push("milestones")
+        if(hasMilestone("w",2)){
             keep.push("points")}
+        if(hasMilestone("w",1)){
+            keep.push("milestones")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     upgrades: {
@@ -210,9 +211,14 @@ addLayer("w", {
         },
         1: {
             requirementDescription: "10 water",
-            effectDescription: "keep oxygen on reset",
+            effectDescription: "keep oxygen updrages on reset",
             done() { return player.w.points.gte(10) }
-        }
+        },
+        2: {
+            requirementDescription: "15 water",
+            effectDescription: "keep oxygen on reset",
+            done() { return player.w.points.gte(15) }
+        },
     },
     hotkeys: [
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
