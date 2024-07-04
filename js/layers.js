@@ -34,12 +34,12 @@ addLayer("a", {
         12: {
             name: "Stellar Inspiration",
             done() {
-                if (((hasAchievement("a",11) == true) && (player.h.points >= 200)) == true) {
+                if ((((hasAchievement("a",11) == true) && (player.h.points >= 200))) == true) {
                     return true
                 }
                 else {
                     return false
-                }
+                },
             },
             tooltip: "Reach 200 hydrogen in scientific discovery.",
             onComplete() {
