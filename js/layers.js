@@ -221,6 +221,8 @@ addLayer("h", {
                 "main-display",
                 "blank",
                 ["bar","progressBar"],
+                "blank",
+                "blank",
                 ["upgrades","3"]
             ] // Removed extra {} here.
         },
