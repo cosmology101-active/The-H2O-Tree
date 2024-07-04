@@ -312,7 +312,7 @@ addLayer("o", {
 addLayer("c", {
     name: "carbon", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized.
-    position: 2, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
+    position: 0, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     startData() { 
         return {
             unlocked: true,
@@ -336,7 +336,7 @@ addLayer("c", {
     gainExp() { // Calculate the exponent on main currency from bonuses.
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row).
+    row: 1, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
         { key: "c", description: "C: Reset for carbon", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
@@ -380,7 +380,7 @@ addLayer("co", {
     },
     requires: new Decimal(25), // Can be a function that takes requirement increases into account.
     resource: "carbon dioxide", // Name of prestige currency.
-    baseResource: "CO2", // Name of resource prestige is based on.
+    baseResource: "minimum(o,2c)", // Name of resource prestige is based on.
     baseAmount() { if (player.o.points.lt(player.c.points.multiply(2))) return player.o.points
                  return player.c.points.multiply(2) 
     },
@@ -393,7 +393,7 @@ addLayer("co", {
     gainExp() { // Calculate the exponent on main currency from bonuses.
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row).
+    row: 2, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
         { key: "co", description: "Shift+C: Reset for CO2", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
@@ -432,7 +432,7 @@ addLayer("w", {
     color: "#88BBFF",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account.
     resource: "water", // Name of prestige currency.
-    baseResource: "H2O", // Name of resource prestige is based on.
+    baseResource: "minimum(h,2o)", // Name of resource prestige is based on.
     baseAmount() { if (player.h.points.lt(player.o.points.multiply(2))) return player.h.points
                  return player.o.points.multiply(2)
     }, // Get the current amount of baseResource.
@@ -445,7 +445,7 @@ addLayer("w", {
     gainExp() { // Calculate the exponent on main currency from bonuses.
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row).
+    row: 2, // Row the layer is in on the tree (0 is the first row).
     milestones: {
         0: {
             requirementDescription: "5 water",
