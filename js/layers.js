@@ -17,6 +17,21 @@ addLayer("a", {
     },
     achievements: {         
         11: {
+            name: "Science!",
+            done() {
+                if (hasUpgrade("h",21)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Unlock Scientific Discovery",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        12: {
             name: "It's H2O",
             done() {
                 if (layerShown("w")) {
@@ -160,7 +175,7 @@ addLayer("h", {
         },
         "Discovery": {
             unlocked() {
-                if (hasUpgrade("h",21)) { return true }
+                if (hasUpgrade("h",21) || hasAchievement("a",11)) { return true }
                 else { return false }
             },
             content: [
@@ -238,7 +253,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",11)) { return true }
+        if (hasUpgrade("h",22) || hasAchievement("a",12)) { return true }
         else { return false }
     }
 })
@@ -295,7 +310,7 @@ addLayer("w", {
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { 
-        if (hasUpgrade("o",21) || hasAchievement("a",11)) { return true }
+        if (hasUpgrade("o",21) || hasAchievement("a",12)) { return true }
         else { return false }
     }
 })
