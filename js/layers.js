@@ -426,7 +426,7 @@ addLayer("co", {
             description: "Carbon dioxide generation is increased by carbon",
             cost: new Decimal(3),
             effect() {
-                return player.c.times(1).add(1).pow(1.02)
+                return player.c.points.times(1).add(1).pow(1.02)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
