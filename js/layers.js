@@ -130,7 +130,7 @@ addLayer("h", {
         22: {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
-            cost: new Decimal(400),
+            cost: new Decimal(150),
         },
         31: {
             title: "Triple Alpha Process",
