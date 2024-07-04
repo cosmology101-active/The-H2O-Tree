@@ -32,6 +32,21 @@ addLayer("a", {
             },
         },
         12: {
+            name: "Stellar Inspiration",
+            done() {
+                if (((hasAchievement("a",11) == true) && (player.h.points >= 200)) == true) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Reach 200 hydrogen in scientific discovery.",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        13: {
             name: "It's H2O",
             done() {
                 if (layerShown("w")) {
@@ -94,8 +109,8 @@ addLayer("h", {
                 if (hasUpgrade("h",31) == false ) {
                     return player.h.points.divide(200)
                 }
-                else {
-                    return 0
+                else if (hasAchievement("a",12)) {
+                    return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                 }
             },
             display() {
@@ -156,6 +171,14 @@ addLayer("h", {
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
+            },
+            unlocked() {
+                if (hasAchievement("a",12)) {
+                    return true
+                }
+                else {
+                    return false
+                }
             },
         },
     },
@@ -253,7 +276,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",12)) { return true }
+        if (hasUpgrade("h",22) || hasAchievement("a",13)) { return true }
         else { return false }
     }
 })
@@ -310,7 +333,7 @@ addLayer("w", {
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { 
-        if (hasUpgrade("o",21) || hasAchievement("a",12)) { return true }
+        if (hasUpgrade("o",21) || hasAchievement("a",13)) { return true }
         else { return false }
     }
 })
