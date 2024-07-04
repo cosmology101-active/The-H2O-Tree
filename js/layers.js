@@ -238,7 +238,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22)) { return true }
+        if (hasUpgrade("h",22) || hasAchievement("a",11)) { return true }
         else { return false }
     }
 })
