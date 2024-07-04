@@ -105,6 +105,15 @@ addLayer("h", {
             direction: RIGHT,
             width: 600,
             height: 50,
+            textStyle: {
+                "color": "#009918"
+            },
+            baseStyle: {
+                "color": "#272727"
+            },
+            fillStyle: {
+                "color": "#B4DCDF"
+            },
             progress() { 
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return player.h.points.divide(200)
@@ -115,7 +124,13 @@ addLayer("h", {
                 }
             },
             display() {
-                return "Reach 200 Hydrogen to unlock next reward"
+                if (hasAchievement("a",11) && !hasAchievement("a",12)) {
+                    return "Reach 200 Hydrogen to unlock next reward"
+                } else if (hasAchievement("a",12)) {
+                    return "Reach 300 Hydrogen and Oxygen to unlock next reward"
+                } else {
+                    return "Complete"
+                }
             },
             unlocked() {
                 return true
