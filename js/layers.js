@@ -300,6 +300,7 @@ addLayer("o", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
+         },
          21: {
             title: "SelfOxygen",
             description: "Oxygen boosts Oxygen gain",
@@ -338,7 +339,7 @@ addLayer("o", {
         if (hasUpgrade("h",22) || hasAchievement("a",13)) { return true }
         else { return false }
     }
-}})
+})
 addLayer("n", {
     name: "nitrogen", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: "N", // This appears on the layer's node. Default is the id with the first letter capitalized.
