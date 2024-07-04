@@ -35,6 +35,24 @@ addLayer("h", {
             keep.push("upgrades")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
+    bars: {
+        ProgressBar: {
+            direction: RIGHT,
+            width: 200,
+            height: 50,
+            progress() { 
+                if (hasUpgrade("h",31) == false ) {
+                    return player.h.points.divide(200)
+                }
+                else {
+                    return 0
+                }
+            },
+            display() {
+                return "Reach 200 Hydrogen to unlock next reward"
+            },
+        },
+    },
     upgrades: {
         11: {
             title: "this is useless",
@@ -74,7 +92,18 @@ addLayer("h", {
         22: {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
-            cost: new Decimal(20),
+            cost: new Decimal(400),
+        },
+        31: {
+            title: "Triple Alpha Process",
+            description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
+            cost: new Decimal(1250),
+            effect() {
+                return player.points.add(1).pow(0.1)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id)) 
+            },
         },
     },
     tabFormat: {
@@ -96,7 +125,10 @@ addLayer("h", {
                 if (hasUpgrade("h",21)) { return true }
                 else { return false }
             },
-            content: [] // Removed extra {} here.
+            content: [
+                "main-display",
+                "bars",
+            ] // Removed extra {} here.
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row).
