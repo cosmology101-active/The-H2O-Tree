@@ -432,7 +432,7 @@ addLayer("w", {
     color: "#88BBFF",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account.
     resource: "water", // Name of prestige currency.
-    baseResource: "min(h,2o)", // Name of resource prestige is based on.
+    baseResource: "H2O", // Name of resource prestige is based on.
     baseAmount() { if (player.h.points.lt(player.o.points.multiply(2))) return player.h.points
                  return player.o.points.multiply(2)
     }, // Get the current amount of baseResource.
