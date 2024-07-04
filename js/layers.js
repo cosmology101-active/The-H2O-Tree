@@ -426,22 +426,12 @@ addLayer("aaa", {
     },
     color: "#F17F3D",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account.
-    resource: "oxygen", // Name of prestige currency.
+    resource: "aaaaaaaaaaaaaaaa", // Name of prestige currency.
     baseResource: "vapor", // Name of resource prestige is based on.
-    baseAmount() { return player.points }, // Get the current amount of baseResource.
+    baseAmount() { return 0 }, // Get the current amount of baseResource.
     type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     exponent: 0.5, // Prestige currency exponent.
-    gainMult() { // Calculate the multiplier for main currency from bonuses.
-        let mult = new Decimal(1)
-        return mult
-    },
-    gainExp() { // Calculate the exponent on main currency from bonuses.
-        return new Decimal(1)
-    },
-    row: 0, // Row the layer is in on the tree (0 is the first row).
-    hotkeys: [
-        { key: "o", description: "O: Reset for oxygen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
-    ],
+    row: 2, // Row the layer is in on the tree (0 is the first row).
     layerShown() { 
         return "ghost"
     }
