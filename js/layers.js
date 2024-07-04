@@ -303,7 +303,7 @@ addLayer("o", {
          21: {
             title: "SelfOxygen",
             description: "Oxygen boosts Oxygen gain",
-            cost: new Decimal(5),
+            cost: new Decimal(30),
             effect() {
                 return player.o.points.add(1).pow(0.25)
             },
@@ -314,7 +314,7 @@ addLayer("o", {
          22: {
             title: "CarOxySynergy",
             description: "Oxygen boosts Carbon gain",
-            cost: new Decimal(5),
+            cost: new Decimal(270),
             effect() {
                 return player.o.points.add(1).pow(0.25)
             },
@@ -325,7 +325,7 @@ addLayer("o", {
         31: {
             title: "Unlock Next Layer",
             description: "Unlocks next layer...what will it be?",
-            cost: new Decimal(3),
+            cost: new Decimal(11570),
             effect() {
                 return player.points.add(1).pow(0.1)
             },
