@@ -424,7 +424,7 @@ addLayer("co", {
         12: {
             title: "Fossil fuels",
             description: "Carbon dioxide generation is increased by carbon",
-            cost: new Decimal(3),
+            cost: new Decimal(250),
             effect() {
                 return player.c.points.times(1).add(1).pow(1.02)
             },
