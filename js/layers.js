@@ -300,6 +300,7 @@ addLayer("o", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
+         },
          21: {
             title: "SelfOxygen",
             description: "Oxygen boosts Oxygen gain",
