@@ -424,7 +424,7 @@ addLayer("c", {
     ],
     doReset(resettingLayer){
         let keep=[];
-        if(hasMilestone("w",3)){
+        if(hasMilestone("co",0)){
             keep.push("upgrades")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
@@ -504,6 +504,13 @@ addLayer("co", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
             },
+        },
+    },
+    milestones: {
+        0: {
+            requirementDescription: "8 carbon dioxide",
+            effectDescription: "keep carbon upgrades on reset",
+            done() { return player.w.points.gte(8) }
         },
     },
     layerShown() { 
