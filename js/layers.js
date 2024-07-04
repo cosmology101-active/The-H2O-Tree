@@ -14,7 +14,24 @@ addLayer("a", {
     row: "side", // Row the layer is in on the tree (0 is the first row).
     layerShown() { 
         return true
-    }
+    },
+    achievements: {         
+        11: {
+            name: "It's H2O",
+            done() {
+                if (layerShown("w")) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Unlock Water Layer",
+            onComplete() {
+                return player.a.points.add(1)
+            },
+        },
+    },
 })
 addLayer("h", {
     name: "hydrogen", // This is optional, only used in a few places. If absent, it just uses the layer id.
