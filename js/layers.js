@@ -181,7 +181,7 @@ addLayer("h", {
         31: {
             title: "Triple Alpha Process",
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
-            cost: new Decimal(1250),
+            cost: new Decimal(750),
             effect() {
                 return player.points.add(1).pow(0.1)
             },
