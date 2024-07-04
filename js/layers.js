@@ -106,11 +106,14 @@ addLayer("h", {
             width: 600,
             height: 50,
             progress() { 
-                if (hasUpgrade("h",31) == false ) {
+                if (((hasAchievement("a",11) == true) && (hasAchievement("a",12) = false)) == true) {
                     return player.h.points.divide(200)
                 }
-                else if (hasAchievement("a",12)) {
+                else if (hasAchievement("a",12) = true) {
                     return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
+                }
+                else {
+                    return 0
                 }
             },
             display() {
