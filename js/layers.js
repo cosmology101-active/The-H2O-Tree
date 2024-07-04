@@ -28,7 +28,7 @@ addLayer("a", {
             },
             tooltip: "Unlock Water Layer",
             onComplete() {
-                return player.a.points.add(1)
+                player.a.points = player.a.points.add(1)
             },
         },
     },
