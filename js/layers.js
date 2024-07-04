@@ -115,20 +115,23 @@ addLayer("h", {
                 "color": "#B4DCDF"
             },
             progress() { 
-                if (hasAchievement("a",11) && !hasAchievement("a",12)) {
-                    return player.h.points.divide(100)
-                } else if (hasAchievement("a",12) && player.h.points.gt(300) && player.o.points.gt(300)) {
-                    return 1
-                } else if (hasAchievement("a",12) && player.h.points.gt.(300) && !player.o.points.gt(300)) {
-                    return player.o.points.divide(300).divide(2).add(0.5)
-                } else if (hasAchievement("a",12) && player.h.points.gt.(300) && !player.o.points.gt(300)) {
-                    return player.h.points.divide(300).divide(2).add(0.5)
-                } else if (hasAchievement("a",12)) {
-                    return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
+                if (hasAchievement("a", 11) && !hasAchievement("a", 12)) {
+                    return player.h.points.divide(100);
+                } else if (hasAchievement("a", 12)) {
+                    if (player.h.points.gt(300) && player.o.points.gt(300)) {
+                        return new Decimal(1);
+                    } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
+                        return player.o.points.divide(300).divide(2).add(0.5);
+                    } else if (player.o.points.gt(300) && !player.h.points.gt(300)) {
+                        return player.h.points.divide(300).divide(2).add(0.5);
+                    } else {
+                        return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2));
+                }
                 } else {
-                    return new Decimal(0)
+                    return new Decimal(0);
                 }
             },
+
             display() {
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return "Reach 100 Hydrogen to unlock next reward"
