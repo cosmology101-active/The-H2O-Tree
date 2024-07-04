@@ -300,8 +300,29 @@ addLayer("o", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
+         21: {
+            title: "SelfOxygen",
+            description: "Oxygen boosts Oxygen gain",
+            cost: new Decimal(5),
+            effect() {
+                return player.o.points.add(1).pow(0.25)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
         },
-        21: {
+         22: {
+            title: "CarOxySynergy",
+            description: "Oxygen boosts Carbon gain",
+            cost: new Decimal(5),
+            effect() {
+                return player.o.points.add(1).pow(0.25)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+        },
+        31: {
             title: "Unlock Next Layer",
             description: "Unlocks next layer...what will it be?",
             cost: new Decimal(3),
@@ -507,7 +528,7 @@ addLayer("w", {
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { 
-        if (hasUpgrade("o",21) || hasAchievement("a",13)) { return true }
+        if (hasUpgrade("o",31) || hasAchievement("a",13)) { return true }
         else { return false }
     }
 })
