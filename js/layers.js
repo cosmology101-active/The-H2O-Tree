@@ -442,40 +442,8 @@ addLayer("aaa", {
     hotkeys: [
         { key: "o", description: "O: Reset for oxygen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
-    doReset(resettingLayer){
-        let keep=[];
-        if(hasMilestone("w",2)){
-            keep.push("points")}
-        if(hasMilestone("w",1)){
-            keep.push("upgrades")}
-        if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
-    },
-    upgrades: {
-        11: {
-            title: "Nuclear Fission",
-            description: "Oxygen boosts hydrogen gain",
-            cost: new Decimal(2),
-            effect() {
-                return player.o.points.add(1).pow(0.25)
-            },
-            effectDisplay() { 
-                return "^" + format(upgradeEffect(this.layer, this.id))
-            },
-        },
-        21: {
-            title: "Unlock Next Layer",
-            description: "Unlocks next layer...what will it be?",
-            cost: new Decimal(3),
-            effect() {
-                return player.points.add(1).pow(0.1)
-            },
-            effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x" 
-            },
-        },
-    },
     layerShown() { 
-        return false
+        return "ghost"
     }
 })
 addLayer("w", {
