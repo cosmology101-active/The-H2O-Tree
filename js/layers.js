@@ -107,6 +107,14 @@ addLayer("h", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
             },
+            unlocked() {
+                if (barProgress("h","ProgressBar") >= 1) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
         },
     },
     tabFormat: {
