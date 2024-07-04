@@ -34,7 +34,7 @@ addLayer("a", {
         12: {
             name: "Stellar Inspiration",
             done() {
-                if ((((hasAchievement("a",11) == true) && (player.h.points >= 200))) == true) {
+                if (hasAchievement("a",11) && (player.h.points >= 200)) {
                     return true
                 }
                 else {
@@ -106,10 +106,10 @@ addLayer("h", {
             width: 600,
             height: 50,
             progress() { 
-                if (((hasAchievement("a",11) == true) && (hasAchievement("a",12) = false)) == true) {
+                if (hasAchievement("a",11) && (hasAchievement("a",12) = false)) {
                     return player.h.points.divide(200)
                 }
-                else if (hasAchievement("a",12) = true) {
+                else if (hasAchievement("a",12)) {
                     return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                 }
                 else {
