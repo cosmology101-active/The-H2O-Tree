@@ -281,6 +281,17 @@ addLayer("o", {
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
         },
+         12: {
+            title: "Vaporization",
+            description: "Oxygen boosts vapor gain",
+            cost: new Decimal(5),
+            effect() {
+                return player.o.points.add(1).pow(0.25)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+        },
         21: {
             title: "Unlock Next Layer",
             description: "Unlocks next layer...what will it be?",
