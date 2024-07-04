@@ -106,7 +106,7 @@ addLayer("h", {
             width: 600,
             height: 50,
             progress() { 
-                if (hasAchievement("a",11) && (hasAchievement("a",12) = false)) {
+                if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return player.h.points.divide(200)
                 }
                 else if (hasAchievement("a",12)) {
