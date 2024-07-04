@@ -264,7 +264,7 @@ addLayer("o", {
         if(hasMilestone("w",2)){
             keep.push("points")}
         if(hasMilestone("w",1)){
-            keep.push("milestones")}
+            keep.push("upgrades")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     upgrades: {
