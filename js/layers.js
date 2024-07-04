@@ -117,6 +117,12 @@ addLayer("h", {
             progress() { 
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return player.h.points.divide(100)
+                } else if (hasAchievement("a",12) && player.h.points.gt(300) && player.o.points.gt(300)) {
+                    return 1
+                } else if (hasAchievement("a",12) && player.h.points.gt.(300) && !player.o.points.gt(300)) {
+                    return player.o.points.divide(300).divide(2).add(0.5)
+                } else if (hasAchievement("a",12) && player.h.points.gt.(300) && !player.o.points.gt(300)) {
+                    return player.h.points.divide(300).divide(2).add(0.5)
                 } else if (hasAchievement("a",12)) {
                     return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                 } else {
