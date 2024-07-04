@@ -312,12 +312,12 @@ addLayer("c", {
     nodeStyle: {
         "background-image": "radial-gradient(circle, #CFCFCF, #272727)"
     },
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account.
-    resource: "oxygen", // Name of prestige currency.
-    baseResource: "vapor", // Name of resource prestige is based on.
-    baseAmount() { return player.points }, // Get the current amount of baseResource.
+    requires: new Decimal(1250), // Can be a function that takes requirement increases into account.
+    resource: "carbon", // Name of prestige currency.
+    baseResource: "hydrogen", // Name of resource prestige is based on.
+    baseAmount() { return player.h.points }, // Get the current amount of baseResource.
     type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
-    exponent: 0.5, // Prestige currency exponent.
+    exponent: 0.75, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
         return mult
@@ -337,31 +337,19 @@ addLayer("c", {
     },
     upgrades: {
         11: {
-            title: "Nuclear Fission",
-            description: "Oxygen boosts hydrogen gain",
+            title: "Carbon Heating",
+            description: "Carbon boosts generation of vapor",
             cost: new Decimal(2),
             effect() {
-                return player.o.points.add(1).pow(0.25)
+                return player.points.add(1).pow(0.01)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
         },
-        21: {
-            title: "Unlock Next Layer",
-            description: "Unlocks next layer...what will it be?",
-            cost: new Decimal(3),
-            effect() {
-                return player.points.add(1).pow(0.1)
-            },
-            effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x" 
-            },
-        },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",13)) { return true }
-        else { return false }
+        return true
     }
 })
 addLayer("w", {
