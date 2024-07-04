@@ -39,7 +39,7 @@ addLayer("a", {
                 }
                 else {
                     return false
-                },
+                }
             },
             tooltip: "Reach 200 hydrogen in scientific discovery.",
             onComplete() {
