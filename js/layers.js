@@ -38,7 +38,7 @@ addLayer("h", {
     bars: {
         progressBar: {
             direction: RIGHT,
-            width: 200,
+            width: 600,
             height: 50,
             progress() { 
                 if (hasUpgrade("h",31) == false ) {
