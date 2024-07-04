@@ -108,12 +108,10 @@ addLayer("h", {
             progress() { 
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return player.h.points.divide(200)
-                }
-                else if (hasAchievement("a",12)) {
+                } else if (hasAchievement("a",12)) {
                     return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
-                }
-                else {
-                    return 0
+                } else {
+                    return new Decimal(0)
                 }
             },
             display() {
