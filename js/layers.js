@@ -86,7 +86,7 @@ addLayer("h", {
         },
         21: {
             title: "Nuclear Fusion",
-            description: "Use fusion to create helium, fueling scientific discovery.",
+            description: "Successfully test fusion, fueling scientific discovery.",
             cost: new Decimal(10),
         },
         22: {
@@ -127,6 +127,7 @@ addLayer("h", {
             },
             content: [
                 "main-display",
+                "blank",
                 "bars",
             ] // Removed extra {} here.
         },
