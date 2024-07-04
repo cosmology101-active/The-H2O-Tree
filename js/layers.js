@@ -36,7 +36,7 @@ addLayer("h", {
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     bars: {
-        ProgressBar: {
+        progressBar: {
             direction: RIGHT,
             width: 200,
             height: 50,
@@ -131,7 +131,7 @@ addLayer("h", {
             content: [
                 "main-display",
                 "blank",
-                ["bar","ProgressBar"],
+                ["bar","progressBar"],
             ] // Removed extra {} here.
         },
     },
