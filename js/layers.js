@@ -397,6 +397,9 @@ addLayer("co", {
     exponent: 0.75, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
+        if (hasUpgrade("co",12)) {
+            mult = mult.pow(upgradeEffect("co",12))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
@@ -416,6 +419,17 @@ addLayer("co", {
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+        },
+        12: {
+            title: "Fossil fuels",
+            description: "Carbon dioxide generation is increased by carbon",
+            cost: new Decimal(3),
+            effect() {
+                return player.c.times(1).add(1).pow(1.02)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id)) 
             },
         },
     },
