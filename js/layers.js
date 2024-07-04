@@ -139,7 +139,7 @@ addLayer("h", {
             content: [
                 "main-display",
                 "blank",
-                "bars",
+                ["bar","ProgressBar"],
             ] // Removed extra {} here.
         },
     },
