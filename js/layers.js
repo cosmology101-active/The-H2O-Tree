@@ -3,9 +3,9 @@ addLayer("a", {
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized.
     position: 0, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     startData() { 
-        return {
-            unlocked: true,
-            points: new Decimal(0),
+        return { true
+            //unlocked: true,
+            //points: new Decimal(0),
         }
     },
     color: "#EFCC04",
@@ -242,7 +242,7 @@ addLayer("h", {
                 } else if (hasUpgrade("h",33)) {
                     if (player.c.points.gt(35) && startData("n","unlocked")) {
                         return new Decimal(1)
-                    } else if (!addLayer.startData("n","unlocked")){
+                    } else if (!startData("n","unlocked")){
                         return player.c.points.divide(35).divide(2)
                     } else {
                         return player.c.points.divide(35).divide(2).add(0.5)
