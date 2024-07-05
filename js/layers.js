@@ -68,7 +68,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",12)) {
+                if (hasAchievement("a",12)) {
                     return true
                 } else {
                     return false
@@ -90,7 +90,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",13)) {
+                if (hasAchievement("a",13)) {
                     return true
                 } else {
                     return false
@@ -112,7 +112,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",14)) {
+                if (hasAchievement("a",14)) {
                     return true
                 } else {
                     return false
@@ -134,7 +134,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",15)) {
+                if (hasAchievement("a",15)) {
                     return true
                 } else {
                     return false
@@ -156,7 +156,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",21)) {
+                if (hasAchievement("a",21)) {
                     return true
                 } else {
                     return false
