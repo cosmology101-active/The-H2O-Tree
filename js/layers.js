@@ -338,7 +338,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",13) || hasMilestone("n",0)) { return true }
+        if (hasUpgrade("h",22) || hasAchievement("a",13) || layerShown("n")) { return true }
         else { return false }
     }
 })
