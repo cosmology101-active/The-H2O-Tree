@@ -47,6 +47,21 @@ addLayer("a", {
             },
         },
         13: {
+            name: "Oxygen?",
+            done() {
+                if (layerShown("o")) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Unlock Oxygen Layer",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        14: {
             name: "It's H2O",
             done() {
                 if (layerShown("w")) {
@@ -346,7 +361,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",32) || hasAchievement("a",13) || layerShown("n")) { return true }
+        if (hasUpgrade("h",32) || hasAchievement("a",14) || layerShown("n")) { return true }
         else { return false }
     }
 })
@@ -519,7 +534,7 @@ addLayer("w", {
         { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
     layerShown() { 
-        if (hasUpgrade("o",31) || hasAchievement("a",13)) { return true }
+        if (hasUpgrade("o",31) || hasAchievement("a",14)) { return true }
         else { return false }
     }
 })
