@@ -265,7 +265,7 @@ addLayer("h", {
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
             cost: new Decimal(150),
             effect() {
-                return player.points.add(1).pow(0.4)
+                return player.h.points.add(1).pow(0.4)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
