@@ -46,7 +46,7 @@ addLayer("a", {
                 player.a.points = player.a.points.add(1)
             },
             unlocked() {
-                if (hasAchivement("a",11)) {
+                if (hasAchievement("a",11)) {
                     return true
                 } else {
                     return false
