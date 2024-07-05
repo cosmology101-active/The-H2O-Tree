@@ -179,31 +179,32 @@ addLayer("h", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account.
     resource: "hydrogen", // Name of prestige currency.
     baseResource: "vapor", // Name of resource prestige is based on.
-    baseAmount() { return player.points }, // Get the current amount of baseResource.
+    baseAmount() { return player.points; }, // Get the current amount of baseResource.
     type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     exponent: 0.5, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
-        let mult = new Decimal(1)
+        let mult = new Decimal(1);
         if (hasUpgrade('h', 13)) {
-            mult = mult.times(upgradeEffect('h', 13))
+            mult = mult.times(upgradeEffect('h', 13));
         }
         if (hasUpgrade('h', 23)) {
-            mult = mult.times(0.95)
+            mult = mult.times(0.95);
         }
         if (hasUpgrade('o', 11)) {
-            mult = mult.times(upgradeEffect('o', 11))
+            mult = mult.times(upgradeEffect('o', 11));
         }
-        return mult
+        return mult;
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
-        return new Decimal(1)
+        return new Decimal(1);
     },
     doReset(resettingLayer){
         let keep=[];
-        if(hasMilestone("w",0)){
-        //    keep.push("milestones")
-            keep.push("upgrades")}
-        if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
+        if (hasMilestone("w",0)){
+            // keep.push("milestones");
+            keep.push("upgrades");
+        }
+        if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep);
     },
     bars: {
         progressBar: {
@@ -234,38 +235,37 @@ addLayer("h", {
                     }
                 } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
                     if (player.w.points.gt(50)) {
-                        return new Decimal(1)
+                        return new Decimal(1);
                     } else {
-                        return player.w.points.divide(50)
+                        return player.w.points.divide(50);
                     }
                 } else if (hasUpgrade("h",33)) {
                     if (player.c.points.gt(35) && layerUnlocked("n")) {
                         return new Decimal(1);
                     } else if (!layerUnlocked("n")){
-                        return player.c.points.divide(35).divide(2)
+                        return player.c.points.divide(35).divide(2);
                     } else {
-                        return player.c.points.divide(35).divide(2).add(0.5)
+                        return player.c.points.divide(35).divide(2).add(0.5);
                     }
                 } else {
                     return new Decimal(0);
                 }
             },
-
             display() {
                 if (!hasUpgrade("h",31)) {
-                    return "Reach 100 Hydrogen to unlock next reward"
+                    return "Reach 100 Hydrogen to unlock next reward";
                 } else if (hasUpgrade("h",31) && !hasUpgrade("h",32)) {
-                    return "Reach 300 Hydrogen and Oxygen to unlock next reward"
+                    return "Reach 300 Hydrogen and Oxygen to unlock next reward";
                 } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
-                    return "Reach 50 Water to unlock next reward"
+                    return "Reach 50 Water to unlock next reward";
                 } else if (hasUpgrade("h",33)) {
-                    return "Unlock Nitrogen and have 35 Carbon to unlock next reward"
+                    return "Unlock Nitrogen and have 35 Carbon to unlock next reward";
                 } else {
-                    return "Complete"
+                    return "Complete";
                 }
             },
             unlocked() {
-                return true
+                return true;
             }
         },
     },
@@ -275,7 +275,7 @@ addLayer("h", {
             description: "Increases vapor gain by a whopping 2x",
             cost: new Decimal(1),
             effectDisplay() { 
-                return "2x" 
+                return "2x"; 
             },
         },
         12: {
@@ -283,10 +283,10 @@ addLayer("h", {
             description: "Boost vapor based on hydrogen currently owned.",
             cost: new Decimal(2),
             effect() {
-                return player[this.layer].points.add(1).pow(0.5)
+                return player[this.layer].points.add(1).pow(0.5);
             },
             effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x" 
+                return format(upgradeEffect(this.layer, this.id)) + "x"; 
             },
         },
         13: {
@@ -294,10 +294,10 @@ addLayer("h", {
             description: "Lowers hydrogen requirement and boosts vapor based on vapor",
             cost: new Decimal(5),
             effect() {
-                return player.points.add(1).pow(0.1)
+                return player.points.add(1).pow(0.1);
             },
             effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x" 
+                return format(upgradeEffect(this.layer, this.id)) + "x"; 
             },
         },
         21: {
@@ -309,16 +309,16 @@ addLayer("h", {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
             currencyInternalName: "vapor",
-            cost: new Decimal (75),
+            cost: new Decimal(75),
             effect() {
-                if (hasUpgrade("h",24)) {
-                    return new Decimal(1.02).times(upgradeEffect("h",24))
+                if (hasUpgrade("h", 24)) {
+                    return new Decimal(1.02).times(upgradeEffect("h", 24));
                 } else {
-                    return new Decimal(1.02)
+                    return new Decimal(1.02);
                 }
             },
             effectDisplay() { 
-                return "^" + format(upgradeEffect(this.layer, this.id)) 
+                return "^" + format(upgradeEffect(this.layer, this.id));
             },
         },
         23: {
@@ -326,14 +326,14 @@ addLayer("h", {
             description: "Use burning of hydrogen to fuel the heating of more vapor but consume hydrogen",
             cost: new Decimal(60),
             effect() {
-                if (hasUpgrade("h",24)) {
-                    return player.h.points.add.(1).pow(0.05).times(1.5).times(upgradeEffect("h",24))
+                if (hasUpgrade("h", 24)) {
+                    return player.h.points.add(1).pow(0.05).times(1.5).times(upgradeEffect("h", 24));
                 } else {
-                    return player.h.points.add.(1).pow(0.05).times(1.5)
+                    return player.h.points.add(1).pow(0.05).times(1.5);
                 }
             },
             effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x"
+                return format(upgradeEffect(this.layer, this.id)) + "x";
             },
         },
         24: {
@@ -341,20 +341,20 @@ addLayer("h", {
             description: "The number of upgrades in row 1 boosts row 2 upgrades",
             cost: new Decimal(200),
             effect() {
-                let upgradeCount = new Decimal(0),
-                if hasUpgrade("h",11) {
-                    upgradeCount = upgradeCount.add(1)
+                let upgradeCount = new Decimal(0);
+                if (hasUpgrade("h", 11)) {
+                    upgradeCount = upgradeCount.add(1);
                 }
-                if hasUpgrade("h",12) {
-                    upgradeCount = upgradeCount.add(1)
+                if (hasUpgrade("h", 12)) {
+                    upgradeCount = upgradeCount.add(1);
                 }
-                if hasUpgrade("h",13) {
-                    upgradeCount = upgradeCount.add(1)
+                if (hasUpgrade("h", 13)) {
+                    upgradeCount = upgradeCount.add(1);
                 }
-                return upgradeCount.add(1).times(0.05)
+                return upgradeCount.add(1).times(0.05);
             },
             effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x"
+                return format(upgradeEffect(this.layer, this.id)) + "x";
             },
         },
         31: {
@@ -362,18 +362,13 @@ addLayer("h", {
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
             cost: new Decimal(150),
             effect() {
-                return player.h.points.add(1).pow(0.1)
+                return player.h.points.add(1).pow(0.1);
             },
             effectDisplay() { 
-                return "^" + format(upgradeEffect(this.layer, this.id)) 
+                return "^" + format(upgradeEffect(this.layer, this.id));
             },
             unlocked() {
-                if (hasAchievement("a",12)) {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return hasAchievement("a", 12);
             },
         },
         32: {
@@ -381,12 +376,7 @@ addLayer("h", {
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(550),
             unlocked() {
-                if (hasAchievement("a",12)) {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return hasAchievement("a", 12);
             },
         },
         33: {
@@ -394,12 +384,7 @@ addLayer("h", {
             description: "Using the CNO cycle of stars we can find new elements.",
             cost: new Decimal(2250),
             unlocked() {
-                if (hasAchievement("a",21)) {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return hasAchievement("a", 21);
             },
         },
     },
@@ -414,30 +399,29 @@ addLayer("h", {
                 "milestones",
                 "blank",
                 "blank",
-                ["upgrades","1","2"]
-            ] // Removed extra {} here.
+                ["upgrades", "1", "2"]
+            ]
         },
         "Discovery": {
             unlocked() {
-                if (hasUpgrade("h",21) || hasAchievement("a",11)) { return true }
-                else { return false }
+                return hasUpgrade("h", 21) || hasAchievement("a", 11);
             },
             content: [
                 "main-display",
                 "blank",
-                ["bar","progressBar"],
+                ["bar", "progressBar"],
                 "blank",
                 "blank",
-                ["upgrades","3"]
-            ] // Removed extra {} here.
+                ["upgrades", "3"]
+            ]
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row).
     hotkeys: [
-        { key: "h", description: "H: hydrogen", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+        { key: "h", description: "H: hydrogen", onPress() { if (canReset(this.layer)) doReset(this.layer); } },
     ],
-    layerShown() { return true }
-})
+    layerShown() { return true; }
+});
 addLayer("o", {
     name: "oxygen", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: "O", // This appears on the layer's node. Default is the id with the first letter capitalized.
