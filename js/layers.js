@@ -45,6 +45,13 @@ addLayer("a", {
             onComplete() {
                 player.a.points = player.a.points.add(1)
             },
+            unlocked() {
+                if (hasAchivement("a",11)) {
+                    return true
+                } else {
+                    return false
+                }
+            },
         },
         13: {
             name: "Oxygen?",
@@ -59,6 +66,13 @@ addLayer("a", {
             tooltip: "Unlock Oxygen Layer",
             onComplete() {
                 player.a.points = player.a.points.add(1)
+            },
+            unlocked() {
+                if (hasAchivement("a",12)) {
+                    return true
+                } else {
+                    return false
+                }
             },
         },
         14: {
@@ -75,6 +89,13 @@ addLayer("a", {
             onComplete() {
                 player.a.points = player.a.points.add(1)
             },
+            unlocked() {
+                if (hasAchivement("a",13)) {
+                    return true
+                } else {
+                    return false
+                }
+            },
         },
         15: {
             name: "It's H2O",
@@ -89,6 +110,13 @@ addLayer("a", {
             tooltip: "Unlock Water Layer",
             onComplete() {
                 player.a.points = player.a.points.add(1)
+            },
+            unlocked() {
+                if (hasAchivement("a",14)) {
+                    return true
+                } else {
+                    return false
+                }
             },
         },
         21: {
@@ -105,6 +133,13 @@ addLayer("a", {
             onComplete() {
                 player.a.points = player.a.points.add(1)
             },
+            unlocked() {
+                if (hasAchivement("a",15)) {
+                    return true
+                } else {
+                    return false
+                }
+            },
         },
         22: {
             name: "CNO Death Star",
@@ -119,6 +154,13 @@ addLayer("a", {
             tooltip: "Get the hydrogen upgrade 'CNO Cycle' and obtain gases",
             onComplete() {
                 player.a.points = player.a.points.add(1)
+            },
+            unlocked() {
+                if (hasAchivement("a",21)) {
+                    return true
+                } else {
+                    return false
+                }
             },
         },
     },
@@ -175,9 +217,9 @@ addLayer("h", {
                 "color": "#B4DCDF"
             },
             progress() { 
-                if (hasAchievement("a", 11) && !hasAchievement("a", 12)) {
+                if (!hasUpgrade("h",31)) {
                     return player.h.points.divide(100);
-                } else if (hasAchievement("a", 12) && !hasAchievement("a",14)) {
+                } else if (hasUpgrade("h",31) && !hasUpgrade("h",32)) {
                     if (player.h.points.gt(300) && player.o.points.gt(300)) {
                         return new Decimal(1);
                     } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
@@ -187,13 +229,13 @@ addLayer("h", {
                     } else {
                         return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2));
                     }
-                } else if (hasAchievement("a",14) && !hasAchievement("a",21)) {
+                } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
                     if (player.w.points.gt(50)) {
                         return new Decimal(1)
                     } else {
                         return player.w.points.divide(50)
                     }
-                } else if (hasAchievement("a",21)) {
+                } else if (hasUpgrade("h",33)) {
                     if (player.c.points.gt(35) && layerUnlocked("n")) {
                         return new Decimal(1);
                     } else if (!layerUnlocked("n")){
@@ -207,13 +249,13 @@ addLayer("h", {
             },
 
             display() {
-                if (hasAchievement("a",11) && !hasAchievement("a",12)) {
+                if (!hasUpgrade("h",31)) {
                     return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasAchievement("a",12) && !hasAchievement("a",14)) {
+                } else if (hasUpgrade("h",31) && !hasUpgrade("h",32)) {
                     return "Reach 300 Hydrogen and Oxygen to unlock next reward"
-                } else if (hasAchievement("a",14) && !hasAchievement("a",21)) {
+                } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
                     return "Reach 50 Water to unlock next reward"
-                } else if (hasAchievement("a",21)) {
+                } else if (hasUpgrade("h",33)) {
                     return "Unlock Nitrogen and have 35 Carbon to unlock next reward"
                 } else {
                     return "Complete"
@@ -260,12 +302,65 @@ addLayer("h", {
             description: "Successfully test fusion, fueling scientific discovery.",
             cost: new Decimal(15),
         },
+        22: {
+            title: "Vapor Inertia",
+            description: "Vapor gain slightly increased and raised to the power of ^1.02",
+            cost: new Decimal (75) {
+                currencyInternalName: "vapor",
+            },
+            effect() {
+                if (hasUpgrade("h",24)) {
+                    return new Decimal(1.02).times(upgradeEffect("h",24))
+                } else {
+                    return new Decimal(1.02)
+                }
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id)) 
+            },
+        },
+        23: {
+            title: "Gas Heating",
+            description: "Use burning of hydrogen to fuel the heating of more vapor but consume hydrogen",
+            cost: new Decimal(60),
+            effect() {
+                if (hasUpgrade("h",24)) {
+                    return player.h.points.add.(1).pow(0.05).times(1.5).times(upgradeEffect("h",24))
+                } else {
+                    return player.h.points.add.(1).pow(0.05).times(1.5)
+                }
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+        },
+        24: {
+            title: "Row Synergy",
+            description: "The number of upgrades in row 1 boosts row 2 upgrades",
+            cost: new Decimal(200),
+            effect() {
+                let upgradeCount = new Decimal(0),
+                if hasUpgrade("h",11) {
+                    upgradeCount = upgradeCount.add(1)
+                }
+                if hasUpgrade("h",12) {
+                    upgradeCount = upgradeCount.add(1)
+                }
+                if hasUpgrade("h",13) {
+                    upgradeCount = upgradeCount.add(1)
+                }
+                return upgradeCount.add(1).times(0.05)
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+        },
         31: {
             title: "Triple Alpha Process",
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
             cost: new Decimal(150),
             effect() {
-                return player.h.points.add(1).pow(0.14)
+                return player.h.points.add(1).pow(0.1)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
@@ -317,7 +412,7 @@ addLayer("h", {
                 "milestones",
                 "blank",
                 "blank",
-                "upgrades"
+                ["upgrades","1","2"]
             ] // Removed extra {} here.
         },
         "Discovery": {
