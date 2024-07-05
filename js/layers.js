@@ -148,16 +148,16 @@ addLayer("h", {
     },
     upgrades: {
         11: {
-            title: "this is useless",
-            description: "buy this and you will have bought this <marquee>jk lol it doubles vapor gain</marquee>",
+            title: "Basic Boost",
+            description: "Increases vapor gain by a whopping 2x",
             cost: new Decimal(1),
             effectDisplay() { 
                 return "2x" 
             },
         },
         12: {
-            title: "omg me degening worked",
-            description: "buy this to support my efforts and boost vapor gain based on hydrogen",
+            title: "Gaseous Vapor",
+            description: "Boost vapor based on hydrogen currently owned.",
             cost: new Decimal(2),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
@@ -167,9 +167,9 @@ addLayer("h", {
             },
         },
         13: {
-            title: "idk",
-            description: "it broke right? (lowers hydrogen requirement and boosts vapor gain based on vapor)",
-            cost: new Decimal(3),
+            title: "Higher Temperature",
+            description: "Lowers hydrogen requirement and boosts vapor based on vapor",
+            cost: new Decimal(5),
             effect() {
                 return player.points.add(1).pow(0.1)
             },
@@ -180,14 +180,14 @@ addLayer("h", {
         21: {
             title: "Nuclear Fusion",
             description: "Successfully test fusion, fueling scientific discovery.",
-            cost: new Decimal(10),
+            cost: new Decimal(15),
         },
         31: {
             title: "Triple Alpha Process",
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
             cost: new Decimal(150),
             effect() {
-                return player.points.add(1).pow(0.1)
+                return player.points.add(1).pow(0.4)12
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id)) 
@@ -205,6 +205,14 @@ addLayer("h", {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(550),
+            unlocked() {
+                if (hasAchievement("a",12)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
         },
     },
     tabFormat: {
