@@ -146,7 +146,7 @@ addLayer("h", {
             mult = mult.times(upgradeEffect('h', 13))
         }
         if (hasUpgrade('o', 11)) {
-            mult = mult.pow(upgradeEffect('o', 11))
+            mult = mult.times(upgradeEffect('o', 11))
         }
         return mult
     },
@@ -388,7 +388,7 @@ addLayer("o", {
             description: "Oxygen boosts hydrogen gain",
             cost: new Decimal(2),
             effect() {
-                return player.o.points.add(1).pow(0.25)
+                return player.o.points.add(1).pow(0.45)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
