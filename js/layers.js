@@ -187,6 +187,9 @@ addLayer("h", {
         if (hasUpgrade('h', 13)) {
             mult = mult.times(upgradeEffect('h', 13))
         }
+        if (hasUpgrade('h', 24)) {
+            mult = mult.times(0.95)
+        }
         if (hasUpgrade('o', 11)) {
             mult = mult.times(upgradeEffect('o', 11))
         }
