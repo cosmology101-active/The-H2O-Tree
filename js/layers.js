@@ -360,6 +360,9 @@ addLayer("o", {
     exponent: 0.5, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
+        if (hasUpgrade("o",21)) {
+            mult = mult.pow(upgradeEffect("o",21))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
@@ -403,25 +406,32 @@ addLayer("o", {
             },
          },
          21: {
-            title: "SelfOxygen",
+            title: "Oxygen Generation",
             description: "Oxygen boosts Oxygen gain",
             cost: new Decimal(30),
             effect() {
-                return player.o.points.add(1).pow(0.25)
+                return player.o.points.add(2).pow(0.3)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
         },
-         22: {
-            title: "CarOxySynergy",
+        22: {
+            title: "Carbonic Oxygen?!",
             description: "Oxygen boosts Carbon gain",
             cost: new Decimal(270),
             effect() {
-                return player.o.points.add(1).pow(0.25)
+                return player.o.points.add(1).pow(0.15).times(4)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+            unlocked() {
+                if (layerShown("c")) {
+                    return true
+                } else {
+                    return false
+                }
             },
         },
         31: {
@@ -534,6 +544,9 @@ addLayer("c", {
     exponent: 0.75, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
+        if (hasUpgrade("o",22)) {
+            mult = mult.times(upgradeEffect("o",22))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
