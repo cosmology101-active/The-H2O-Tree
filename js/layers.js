@@ -304,6 +304,9 @@ addLayer("h", {
             title: "Nuclear Fusion",
             description: "Successfully test fusion, fueling scientific discovery.",
             cost: new Decimal(15),
+            unlocked() {
+                return true
+            },
         },
         22: {
             title: "Vapor Inertia",
