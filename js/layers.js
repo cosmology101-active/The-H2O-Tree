@@ -62,6 +62,21 @@ addLayer("a", {
             },
         },
         14: {
+            name: "Cleaning fluid",
+            done() {
+                if (player.h.points.gte(300) && player.o.points.gte(300)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Reach 300 hydrogen & 300 oxygen for hydrogen peroxide",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        15: {
             name: "It's H2O",
             done() {
                 if (layerShown("w")) {
@@ -72,6 +87,36 @@ addLayer("a", {
                 }
             },
             tooltip: "Unlock Water Layer",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        21: {
+            name: "Water Power",
+            done() {
+                if (player.w.points.gte(50)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Get 50 water",
+            onComplete() {
+                player.a.points = player.a.points.add(1)
+            },
+        },
+        22: {
+            name: "CNO Death Star",
+            done() {
+                if (hasUpgrade("h",33)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+            tooltip: "Get the hydrogen upgrade 'CNO Cycle' and obtain gases",
             onComplete() {
                 player.a.points = player.a.points.add(1)
             },
@@ -132,7 +177,7 @@ addLayer("h", {
             progress() { 
                 if (hasAchievement("a", 11) && !hasAchievement("a", 12)) {
                     return player.h.points.divide(100);
-                } else if (hasAchievement("a", 12)) {
+                } else if (hasAchievement("a", 12) && !hasAchievement("a",14)) {
                     if (player.h.points.gt(300) && player.o.points.gt(300)) {
                         return new Decimal(1);
                     } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
@@ -141,7 +186,21 @@ addLayer("h", {
                         return player.h.points.divide(300).divide(2).add(0.5);
                     } else {
                         return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2));
-                }
+                    }
+                } else if (hasAchievement("a",14) && !hasAchievement("a",21)) {
+                    if (player.w.points.gt(50)) {
+                        return new Decimal(1)
+                    } else {
+                        return player.w.points.divide(50)
+                    }
+                } else if (hasAchievement("a",21)) {
+                    if (player.c.points.gt(35) && layerUnlocked("n")) {
+                        return new Decimal(1);
+                    } else if (!layerUnlocked("n")){
+                        return player.c.points.divide(35).divide(2)
+                    } else {
+                        return player.c.points.divide(35).divide(2).add(0.5)
+                    }
                 } else {
                     return new Decimal(0);
                 }
@@ -150,8 +209,12 @@ addLayer("h", {
             display() {
                 if (hasAchievement("a",11) && !hasAchievement("a",12)) {
                     return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasAchievement("a",12)) {
+                } else if (hasAchievement("a",12) && !hasAchievement("a",14)) {
                     return "Reach 300 Hydrogen and Oxygen to unlock next reward"
+                } else if (hasAchievement("a",14) && !hasAchievement("a",21)) {
+                    return "Reach 50 Water to unlock next reward"
+                } else if (hasAchievement("a",21)) {
+                    return "Unlock Nitrogen and have 35 Carbon to unlock next reward"
                 } else {
                     return "Complete"
                 }
@@ -222,6 +285,19 @@ addLayer("h", {
             cost: new Decimal(550),
             unlocked() {
                 if (hasAchievement("a",12)) {
+                    return true
+                }
+                else {
+                    return false
+                }
+            },
+        },
+        33: {
+            title: "CNO Cycle",
+            description: "Using the CNO cycle of stars we can find new elements.",
+            cost: new Decimal(2250),
+            unlocked() {
+                if (hasAchievement("a",21)) {
                     return true
                 }
                 else {
@@ -361,7 +437,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",32) || hasAchievement("a",14) || layerShown("n")) { return true }
+        if (hasUpgrade("h",32) || hasAchievement("a",12) || layerShown("n")) { return true }
         else { return false }
     }
 })
@@ -428,7 +504,11 @@ addLayer("n", {
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     layerShown() {
-        return true
+        if (hasUpgrade("h",33)) {
+            return true
+        } else {
+            return false
+        }
     }
 })
 addLayer("c", {
@@ -482,8 +562,12 @@ addLayer("c", {
             },
         },
     },
-    layerShown() { 
-        return true
+    layerShown() {
+        if (hasUpgrade("h",33)) {
+            return true
+        } else {
+            return false
+        }
     }
 })
 addLayer("w", {
@@ -593,7 +677,11 @@ addLayer("nh", {
         },
     },
     layerShown() { 
-        return true
+        if (hasAchievement("a",22)) {
+            return true
+        } else {
+            return false
+        }
     }
 })
 addLayer("co", {
@@ -665,6 +753,10 @@ addLayer("co", {
         },
     },
     layerShown() { 
-        return true
+        if (hasAchievement("a",22)) {
+            return true
+        } else {
+            return false
+        }
     }
 })
