@@ -310,7 +310,7 @@ addLayer("h", {
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
             currencyInternalName: "vapor",
             canAfford() {
-                return player.points.gte(new Decimal(75))
+                return player.points.gte(75)
             },
             cost: new Decimal(75),
             effect() {
