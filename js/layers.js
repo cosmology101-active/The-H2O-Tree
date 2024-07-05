@@ -308,9 +308,8 @@ addLayer("h", {
         22: {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
-            cost: new Decimal (75) {
-                currencyInternalName: "vapor",
-            },
+            currencyInternalName: "vapor",
+            cost: new Decimal (75),
             effect() {
                 if (hasUpgrade("h",24)) {
                     return new Decimal(1.02).times(upgradeEffect("h",24))
