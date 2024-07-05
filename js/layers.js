@@ -357,7 +357,7 @@ addLayer("h", {
                 if (hasUpgrade("h", 13)) {
                     upgradeCount = upgradeCount.add(1)
                 }
-                return upgradeCount.add(1).times(0.05)
+                return upgradeCount.add(2).times(0.5)
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
