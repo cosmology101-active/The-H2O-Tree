@@ -276,6 +276,8 @@ addLayer("o", {
             keep.push("points")}
         if(hasMilestone("w",1)){
             keep.push("upgrades")}
+        if(hasMilestone("n",0)){
+            keep.push("upgrades")}
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     upgrades: {
@@ -336,7 +338,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",13)) { return true }
+        if (hasUpgrade("h",22) || hasAchievement("a",13) || hasMilestone("n",0)) { return true }
         else { return false }
     }
 })
@@ -387,6 +389,13 @@ addLayer("n", {
             effect() {
                 return new Decimal(1.5)
             },
+        },
+    },
+    milestones: {
+        0: {
+            requirementDescription: "2 nitrogen",
+            effectDescription: "Keep oxygen upgrades on reset",
+            done() { return player.n.points.gte(2) }
         },
     },
     doReset(resettingLayer){
