@@ -409,7 +409,8 @@ addLayer("h", {
                 "milestones",
                 "blank",
                 "blank",
-                ["upgrades", "1", "2"]
+                ["upgrades", "1"],
+                ["upgrades", "2"]
             ]
         },
         "Discovery": {
