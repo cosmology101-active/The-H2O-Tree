@@ -308,7 +308,7 @@ addLayer("h", {
         22: {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
-            currencyInternalName: "vapor",
+            currencyLocation: player.points,
             cost: new Decimal(75),
             effect() {
                 if (hasUpgrade("h", 24)) {
