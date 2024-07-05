@@ -182,15 +182,10 @@ addLayer("h", {
             description: "Successfully test fusion, fueling scientific discovery.",
             cost: new Decimal(10),
         },
-        22: {
-            title: "Stellar Fusion",
-            description: "Using the same process as a supernova this will unlock...",
-            cost: new Decimal(150),
-        },
         31: {
             title: "Triple Alpha Process",
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
-            cost: new Decimal(750),
+            cost: new Decimal(150),
             effect() {
                 return player.points.add(1).pow(0.1)
             },
@@ -205,6 +200,11 @@ addLayer("h", {
                     return false
                 }
             },
+        },
+        32: {
+            title: "Stellar Fusion",
+            description: "Using the same process as a supernova this will unlock...",
+            cost: new Decimal(550),
         },
     },
     tabFormat: {
@@ -338,7 +338,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",22) || hasAchievement("a",13) || layerShown("n")) { return true }
+        if (hasUpgrade("h",32) || hasAchievement("a",13) || layerShown("n")) { return true }
         else { return false }
     }
 })
