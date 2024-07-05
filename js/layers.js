@@ -311,7 +311,7 @@ addLayer("h", {
             currencyInternalName: "vapor",
             canAfford() {
                 return player.points.gte(new Decimal(75))
-            }
+            },
             cost: new Decimal(75),
             effect() {
                 if (hasUpgrade("h", 24)) {
