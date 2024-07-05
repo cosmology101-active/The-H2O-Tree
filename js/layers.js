@@ -240,9 +240,9 @@ addLayer("h", {
                         return player.w.points.divide(50)
                     }
                 } else if (hasUpgrade("h",33)) {
-                    if (player.c.points.gt(35) && layerUnlocked("n")) {
+                    if (player.c.points.gt(35) && startData("n","unlocked")) {
                         return new Decimal(1)
-                    } else if (!layerUnlocked("n")){
+                    } else if (!startData("n","unlocked")){
                         return player.c.points.divide(35).divide(2)
                     } else {
                         return player.c.points.divide(35).divide(2).add(0.5)
@@ -535,7 +535,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",32) || hasAchievement("a",12) || layerShown("n")) { return true }
+        if (hasUpgrade("h",32)) { return true }
         else { return false }
     }
 })
