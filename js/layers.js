@@ -452,6 +452,58 @@ addLayer("c", {
         return true
     }
 })
+addLayer("w", {
+    name: "water", // This is optional, only used in a few places. If absent, it just uses the layer id.
+    symbol: "W", // This appears on the layer's node. Default is the id with the first letter capitalized.
+    position: 1, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
+    branches: ["h","o"],
+    effect() {
+        return player[this.layer].points.sqrt().add(1)
+    },
+    effectDescription() {return "which is boosting vapor generation by "+String(player[this.layer].points.sqrt().add(1).multiply(100).round().divide(100)) + "x"},
+    startData() { 
+        return {
+            unlocked: true,
+            points: new Decimal(0),
+        }
+    },
+    color: "#88BBFF",
+    requires: new Decimal(10), // Can be a function that takes requirement increases into account.
+    resource: "water", // Name of prestige currency.
+    baseResource: "H,2O", // Name of resource prestige is based on.
+    baseAmount() { if (player.h.points.lt(player.o.points.multiply(2))) return player.h.points
+                 return player.o.points.multiply(2)
+    }, // Get the current amount of baseResource.
+    type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
+    exponent: 0.5, // Prestige currency exponent.
+    gainMult() { // Calculate the multiplier for main currency from bonuses.
+        let mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses.
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row).
+    milestones: {
+        0: {
+            requirementDescription: "5 water",
+            effectDescription: "keep hydrogen upgrades on reset",
+            done() { return player.w.points.gte(5) }
+        },
+        1: {
+            requirementDescription: "10 water",
+            effectDescription: "keep oxygen upgrades on reset",
+            done() { return player.w.points.gte(10) }
+        },
+    },
+    hotkeys: [
+        { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+    ],
+    layerShown() { 
+        if (hasUpgrade("o",31) || hasAchievement("a",13)) { return true }
+        else { return false }
+    }
+})
 addLayer("nh", {
     name: "ammonia", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: "AM", // This appears on the layer's node. Default is the id with the first letter capitalized.
@@ -580,57 +632,5 @@ addLayer("co", {
     },
     layerShown() { 
         return true
-    }
-})
-addLayer("w", {
-    name: "water", // This is optional, only used in a few places. If absent, it just uses the layer id.
-    symbol: "W", // This appears on the layer's node. Default is the id with the first letter capitalized.
-    position: 1, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
-    branches: ["h","o"],
-    effect() {
-        return player[this.layer].points.sqrt().add(1)
-    },
-    effectDescription() {return "which is boosting vapor generation by "+String(player[this.layer].points.sqrt().add(1).multiply(100).round().divide(100)) + "x"},
-    startData() { 
-        return {
-            unlocked: true,
-            points: new Decimal(0),
-        }
-    },
-    color: "#88BBFF",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account.
-    resource: "water", // Name of prestige currency.
-    baseResource: "H,2O", // Name of resource prestige is based on.
-    baseAmount() { if (player.h.points.lt(player.o.points.multiply(2))) return player.h.points
-                 return player.o.points.multiply(2)
-    }, // Get the current amount of baseResource.
-    type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
-    exponent: 0.5, // Prestige currency exponent.
-    gainMult() { // Calculate the multiplier for main currency from bonuses.
-        let mult = new Decimal(1)
-        return mult
-    },
-    gainExp() { // Calculate the exponent on main currency from bonuses.
-        return new Decimal(1)
-    },
-    row: 2, // Row the layer is in on the tree (0 is the first row).
-    milestones: {
-        0: {
-            requirementDescription: "5 water",
-            effectDescription: "keep hydrogen upgrades on reset",
-            done() { return player.w.points.gte(5) }
-        },
-        1: {
-            requirementDescription: "10 water",
-            effectDescription: "keep oxygen upgrades on reset",
-            done() { return player.w.points.gte(10) }
-        },
-    },
-    hotkeys: [
-        { key: "w", description: "W: Reset for water", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
-    ],
-    layerShown() { 
-        if (hasUpgrade("o",31) || hasAchievement("a",13)) { return true }
-        else { return false }
     }
 })
