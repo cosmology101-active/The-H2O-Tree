@@ -411,7 +411,7 @@ addLayer("h", {
         },
         "Discovery": {
             unlocked() {
-                return hasUpgrade("h", 21) || hasAchievement("a", 11)
+                return (hasUpgrade("h", 21) || hasAchievement("a", 11))
             },
             content: [
                 "main-display",
