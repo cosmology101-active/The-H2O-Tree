@@ -423,7 +423,7 @@ addLayer("h", {
             content: [
                 "main-display",
                 "blank",
-                ["bar", "progressBar"],
+                ["bar", "0"],
                 "blank",
                 "blank",
                 ["upgrades", "3"]
