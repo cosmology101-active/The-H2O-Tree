@@ -309,10 +309,11 @@ addLayer("h", {
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
             currencyDisplayName: "hydrogen and 101 vapor",
             canAfford() {
-                return player.points.gte(101)
+                return player.points.gte(101) && player.h.points.gte(10);
             },
             pay() {
-                return player.points = player.points.minus(101)
+                player.h.points = player.h.minus(10)
+                player.points = player.points.minus(101)
             },
             cost: new Decimal(10),
             effect() {
