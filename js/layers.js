@@ -315,7 +315,6 @@ addLayer("h", {
             canAfford() {
                 return player.points.gte(75)
             },
-            cost: new Decimal(75),
             effect() {
                 if (hasUpgrade("h", 24)) {
                     return new Decimal(1.02).times(upgradeEffect("h", 24))
