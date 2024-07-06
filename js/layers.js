@@ -209,6 +209,7 @@ addLayer("h", {
             hasUpgrade("h",31) = true
             hasUpgrade("h",32) = true
             hasUpgrade("h",33) = true
+            hasUpgrade("h",34) = true
         }
     },
     bars: {
@@ -226,9 +227,9 @@ addLayer("h", {
                 "color": "#B4DCDF"
             },
             progress() { 
-                if (!hasUpgrade("h",31)) {
+                if (!hasUpgrade("h",33)) {
                     return player.h.points.divide(100)
-                } else if (hasUpgrade("h",31) && !hasUpgrade("h",32)) {
+                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
                     if (player.h.points.gt(300) && player.o.points.gt(300)) {
                         return new Decimal(1)
                     } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
@@ -238,19 +239,11 @@ addLayer("h", {
                     } else {
                         return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                     }
-                } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
+                } else if (hasUpgrade("h",34)) {
                     if (player.w.points.gt(50)) {
                         return new Decimal(1)
                     } else {
                         return player.w.points.divide(50)
-                    }
-                } else if (hasUpgrade("h",33)) {
-                    if (player.c.points.gt(35) && getStartLayerData("n").unlocked) {
-                        return new Decimal(1)
-                    } else if (!getStartLayerData("n").unlocked){
-                        return player.c.points.divide(35).divide(2)
-                    } else {
-                        return player.c.points.divide(35).divide(2).add(0.5)
                     }
                 } else {
                     return new Decimal(0)
@@ -259,12 +252,10 @@ addLayer("h", {
             display() {
                 if (!hasUpgrade("h",31)) {
                     return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasUpgrade("h",31) && !hasUpgrade("h",32)) {
+                } else if (hasUpgrade("h",31) && !hasUpgrade("h",33)) {
                     return "Reach 300 Hydrogen and Oxygen to unlock next reward"
-                } else if (hasUpgrade("h",32) && !hasUpgrade("h",33)) {
+                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
                     return "Reach 50 Water to unlock next reward"
-                } else if (hasUpgrade("h",33)) {
-                    return "Unlock Nitrogen and have 35 Carbon to unlock next reward"
                 } else {
                     return "Complete"
                 }
@@ -307,7 +298,7 @@ addLayer("h", {
         },
         21: {
             title: "Nuclear Fusion",
-            description: "Unlocks scientific discovery tab.",
+            description: "Successfully test fusion, fueling scientific discovery.",
             cost: new Decimal(15),
             unlocked() {
                 return true
@@ -316,13 +307,14 @@ addLayer("h", {
         22: {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
-            currencyDisplayName: "101 vapor",
+            currencyDisplayName: "hydrogen and 101 vapor",
             canAfford() {
                 return player.points.gte(101)
             },
             pay() {
                 return player.points = player.points.minus(101)
             },
+            cost: new Decimal(10),
             effect() {
                 if (hasUpgrade("h", 24)) {
                     return new Decimal(1.02).times(upgradeEffect("h", 24))
@@ -385,14 +377,28 @@ addLayer("h", {
             },
         },
         32: {
+            title: "Proton-Proton",
+            description: "Unlock another way to create energy from pure hydrogen. Boost vapor gain by 3x",
+            cost: new Decimal(255),
+            effect() {
+                return new Decimal(3)
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+            unlocked() {
+                return hasUpgrade("h",31)
+            },
+        },
+        33: {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(550),
             unlocked() {
-                return hasUpgrade("h",31) && player.h.points.gt(300) && player.o.points.gt(300)
+                return hasUpgrade("h",32)
             },
         },
-        33: {
+        34: {
             title: "CNO Cycle",
             description: "Using the CNO cycle of stars we can find new elements.",
             cost: new Decimal(2250),
@@ -542,7 +548,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",32)) { return true }
+        if (hasUpgrade("h",33)) { return true }
         else { return false }
     }
 })
