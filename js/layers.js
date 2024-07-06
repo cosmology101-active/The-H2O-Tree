@@ -307,7 +307,7 @@ addLayer("h", {
         },
         21: {
             title: "Nuclear Fusion",
-            description: "Successfully test fusion, fueling scientific discovery.",
+            description: "Unlocks scientific discovery tab.",
             cost: new Decimal(15),
             unlocked() {
                 return true
