@@ -240,7 +240,7 @@ addLayer("h", {
                         return player.w.points.divide(50)
                     }
                 } else if (hasUpgrade("h",33)) {
-                    if (player.c.points.gt(35) && startData("n","unlocked")) {
+                    if (player.c.points.gt(35) && getStartLayerData("n").unlocked) {
                         return new Decimal(1)
                     } else if (!getStartLayerData("n").unlocked){
                         return player.c.points.divide(35).divide(2)
