@@ -389,7 +389,7 @@ addLayer("h", {
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(550),
             unlocked() {
-                return hasUpgrade("h",31) && player.progress("progressBar")
+                return hasUpgrade("h",31) && progress("progressBar") == 1
             },
         },
         33: {
