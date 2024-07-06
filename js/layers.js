@@ -205,6 +205,11 @@ addLayer("h", {
             keep.push("upgrades")
         }
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
+        if (layerShown("n") || layerShown("w") || layerShown("c") || layerShown("nh") || layerShown("co")){
+            hasUpgrade("h",31) = true
+            hasUpgrade("h",32) = true
+            hasUpgrade("h",33) = true
+        }
     },
     bars: {
         progressBar: {
