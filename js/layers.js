@@ -738,7 +738,7 @@ addLayer("w", {
 })
 addLayer("nh", {
     name: "ammonia", // This is optional, only used in a few places. If absent, it just uses the layer id.
-    symbol: "AM", // This appears on the layer's node. Default is the id with the first letter capitalized.
+    symbol: `<img src="./resources/nh3.png" alt="AM">`, // This appears on the layer's node. Default is the id with the first letter capitalized.
     position: 0, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     branches: ["n","h"],
     startData() { 
@@ -800,7 +800,7 @@ addLayer("nh", {
 })
 addLayer("co", {
     name: "carbon dioxide", // This is optional, only used in a few places. If absent, it just uses the layer id.
-    symbol: "CO", // This appears on the layer's node. Default is the id with the first letter capitalized.
+    symbol: `<img src="./resources/co2.png" alt="CO">`, // This appears on the layer's node. Default is the id with the first letter capitalized.
     position: 2, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     branches: ["c","o"],
     startData() { 
