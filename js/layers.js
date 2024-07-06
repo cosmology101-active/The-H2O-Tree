@@ -212,7 +212,7 @@ addLayer("h", {
         }
     },
     bars: {
-        progressBar: {
+        0: {
             direction: RIGHT,
             width: 600,
             height: 50,
@@ -389,7 +389,7 @@ addLayer("h", {
             description: "Using the same process as a supernova this will unlock...",
             cost: new Decimal(550),
             unlocked() {
-                return hasUpgrade("h",31) && player[this.layer].bars["progressBar"].progress == 1
+                return hasUpgrade("h",31) && player[this.layer].bars[0].progress == 1
             },
         },
         33: {
