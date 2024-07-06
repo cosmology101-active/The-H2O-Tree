@@ -294,7 +294,7 @@ addLayer("h", {
             description: "Lowers hydrogen requirement and boosts vapor based on vapor",
             cost: new Decimal(5),
             effect() {
-                return player.points.add(1).pow(0.02).add(3).divide(3).times(0.8)
+                return log10(player.points.add(1).pow(0.05))
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x" 
