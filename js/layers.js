@@ -311,9 +311,12 @@ addLayer("h", {
         22: {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
-            currencyDisplayName: "vapor",
+            currencyDisplayName: "101 vapor",
             canAfford() {
-                return player.points.gte(75)
+                return player.points.gte(101)
+            },
+            pay() {
+                return player.points = player.points.minus(101)
             },
             effect() {
                 if (hasUpgrade("h", 24)) {
