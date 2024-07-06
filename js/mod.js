@@ -1,6 +1,6 @@
 let modInfo = {
 	name: "The H2O Tree",
-	id: "mymod",
+	id: "H2O",
 	author: "cosmology101 and bdcl",
 	pointsName: "vapor",
 	modFiles: ["layers.js", "tree.js"],
@@ -72,7 +72,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.h.points.gte(new Decimal("e2800"))
 }
 
 
