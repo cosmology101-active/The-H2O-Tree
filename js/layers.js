@@ -312,7 +312,7 @@ addLayer("h", {
                 return player.points.gte(101) && player.h.points.gte(10);
             },
             pay() {
-                player.h.points = player.h.minus(10)
+                player.h.points = player.h.points.minus(10)
                 player.points = player.points.minus(101)
             },
             cost: new Decimal(10),
