@@ -744,7 +744,7 @@ addLayer("w", {
         },
     },
     tabFormat: {
-        "Hydrogen": {
+        "Water": {
             content: [
                 "main-display",
                 "prestige-button",
@@ -753,12 +753,9 @@ addLayer("w", {
                 "blank",
                 "milestones",
                 "blank",
-                "blank",
-                ["upgrades", "1"],
-                ["upgrades", "2"]
             ]
         },
-        "Discovery": {
+        "Water Cycle": {
             unlocked() {
                 return true
             },
