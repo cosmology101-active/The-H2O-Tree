@@ -206,10 +206,7 @@ addLayer("h", {
         }
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
         if (layerShown("n") || layerShown("w") || layerShown("c") || layerShown("nh") || layerShown("co")){
-            hasUpgrade("h",31) = true
-            hasUpgrade("h",32) = true
-            hasUpgrade("h",33) = true
-            hasUpgrade("h",34) = true
+            player.h.upgrades = player.h.upgrades.concat([31,32,33,34])
         }
     },
     bars: {
