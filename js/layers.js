@@ -695,6 +695,8 @@ addLayer("w", {
         return {
             unlocked: true,
             points: new Decimal(0),
+            watervapor: new Decimal(0),
+            condensation: new Decimal(0),
         }
     },
     color: "#88BBFF",
@@ -714,6 +716,21 @@ addLayer("w", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row).
+    buyables: {
+        11: {
+            title: "Evaporation",
+            cost(x) { return new Decimal(1).mul(x).pow(1.3) },
+            display() { return "Evaporate water and generate water vapor. \nCurrently: " + buyableEffect("w",11) + " water vapor / tick"},
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost()),
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1)),
+            },
+            effect(x) {
+                return new Decimal(1).mul(x).pow(1.4)
+            },
+        },
+    },
     milestones: {
         0: {
             requirementDescription: "5 water",
@@ -724,6 +741,37 @@ addLayer("w", {
             requirementDescription: "10 water",
             effectDescription: "keep oxygen upgrades on reset",
             done() { return player.w.points.gte(10) }
+        },
+    },
+    tabFormat: {
+        "Hydrogen": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "blank",
+                "display-text",
+                "blank",
+                "milestones",
+                "blank",
+                "blank",
+                ["upgrades", "1"],
+                ["upgrades", "2"]
+            ]
+        },
+        "Discovery": {
+            unlocked() {
+                return true
+            },
+            content: [
+                "main-display",
+                "blank",
+                ["display-text",
+                    function() { return 'I have ' + format(player.w.watervapor) + ' water vapor, boosting vapor generation by ' +  format(log10(player.w.watervapor.pow(0.4)))},
+                    {"font-size": "12px"}
+                ],
+                "blank",
+                "blank",
+            ],
         },
     },
     hotkeys: [
