@@ -247,11 +247,11 @@ addLayer("h", {
                 }
             },
             display() {
-                if (!hasUpgrade("h",31)) {
+                if (!hasUpgrade("h",33)) {
                     return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasUpgrade("h",31) && !hasUpgrade("h",33)) {
-                    return "Reach 300 Hydrogen and Oxygen to unlock next reward"
                 } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
+                    return "Reach 300 Hydrogen and Oxygen to unlock next reward"
+                } else if (hasUpgrade("h",34)) {
                     return "Reach 50 Water to unlock next reward"
                 } else {
                     return "Complete"
