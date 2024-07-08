@@ -768,6 +768,7 @@ addLayer("w", {
                     { "font-size": "12px" },
                 ],
                 "blank",
+                "blank",
                 "buyables",
                 "blank",
             ],
