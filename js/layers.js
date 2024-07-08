@@ -764,7 +764,7 @@ addLayer("w", {
                 "main-display",
                 "blank",
                 ["display-text",
-                    function() { return 'I have ' + format(player.w.watervapor) + ' water vapor, boosting vapor generation by ' + format(log10(player.w.watervapor.pow(0.4))); },
+                    function() { return 'I have ' + format(player.w.watervapor) + ' water vapor, boosting vapor generation by ' + format(player.w.watervapor.pow(0.4.log10())); },
                     { "font-size": "12px" },
                 ],
                 "blank",
