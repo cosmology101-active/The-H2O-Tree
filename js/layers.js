@@ -773,7 +773,7 @@ addLayer("w", {
                 "main-display",
                 "blank",
                 ["display-text",
-                    function() { return 'You have ' + format(player.w.watervapor) + ' water vapor, boosting vapor generation by ' + format(player.w.watervapor.pow(0.4).log10()); },
+                    function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.4).log10()); },
                     { "font-size": "12px" },
                 ],
                 "blank",
