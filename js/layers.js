@@ -727,7 +727,7 @@ addLayer("w", {
         if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
     },
     update(diff) {
-        if(!player.w.unlocked) {
+        if(player.w.unlocked) {
             let basegain = player.w.points.mul(1.5);
             let vmult = new Decimal(1);
             if (hasBuyable("w",11)) {
