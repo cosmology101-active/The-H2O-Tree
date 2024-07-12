@@ -699,9 +699,8 @@ addLayer("w", {
         return {
             unlocked: true,
             points: new Decimal(0),
-            vGain: new Decimal(0),
             v: new Decimal(0),
-            condensation: new Decimal(0),
+            dew: new Decimal(0),
         };
     },
     color: "#88BBFF",
@@ -727,10 +726,16 @@ addLayer("w", {
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep);
         if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
     },
-    update(diff){
-        player.w.vGain = buyableEffect("w", 11);
-        if(!player.w.unlocked)return;
-        player.w.v=player.w.v.plus(player.w.vGain.times(diff));},
+    update(diff) {
+        if(!player.w.unlocked) {
+            let basegain = player.w.points.mul(1.5),
+            let mult = new Decimal(1),
+            if (hasBuyable("w",11)) {
+                basegain = basegain.add(buyableEffect("w", 11))
+            }
+            return; player.w.v = player.w.v.plus(new Decimal(0).plus(basegain).mul(mult).times(diff));
+        }
+    },
     buyables: {
         11: {
             title: "Evaporation",
@@ -741,7 +746,7 @@ addLayer("w", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost());
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1));
             },
-            effect(x) { return new Decimal(1).mul(x).pow(1.4); },
+            effect(x) { return new Decimal(1).mul(x).mul(2); },
         },
     },
     milestones: {
