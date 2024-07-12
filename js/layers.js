@@ -721,6 +721,12 @@ addLayer("w", {
         return new Decimal(1);
     },
     row: 1, // Row the layer is in on the tree (0 is the first row).
+    doReset(resettinglayer){
+        if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep);
+        
+        if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
+    },
+    update(diff){if(!player.w.unlocked)return;player.w.v=player.w.v.plus(new Decimal(1).mul(x).pow(1.4).times(diff));},
     buyables: {
         11: {
             title: "Evaporation",
