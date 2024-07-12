@@ -721,7 +721,7 @@ addLayer("w", {
         return new Decimal(1);
     },
     row: 1, // Row the layer is in on the tree (0 is the first row).
-    doReset(resettinglayer){
+    doReset(resettingLayer){
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep);
         
         if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
