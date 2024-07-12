@@ -49,16 +49,18 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	//MULTS
 	if (hasUpgrade('h', 11)) gain = gain.times(2)
 	if (hasUpgrade('h', 12)) gain = gain.times(upgradeEffect('h', 12))
 	if (hasUpgrade('h', 13)) gain = gain.times(upgradeEffect('h', 13))
 	if (hasUpgrade('h', 22)) gain = gain.times(upgradeEffect('h', 22))
 	if (hasUpgrade('h', 23)) gain = gain.times(upgradeEffect('h', 23))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
+	if (layerUnlocked("w")) gain = gain.times(player.w.v.pow(0.4).log10())
 	if (hasUpgrade('co', 11)) gain = gain.times(upgradeEffect("co",11))
+	//POWERS
 	if (hasUpgrade('h', 31)) gain = gain.pow(upgradeEffect('h' , 31))
 	if (hasUpgrade('c', 11)) gain = gain.pow(upgradeEffect("c",11))
-	gain=gain.times(player.w.v.pow(0.4).log10())
 	return gain
 }
 
