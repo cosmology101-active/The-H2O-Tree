@@ -699,7 +699,7 @@ addLayer("w", {
         return {
             unlocked: true,
             points: new Decimal(0),
-            watervapor: new Decimal(0),
+            v: new Decimal(0),
             condensation: new Decimal(0),
         };
     },
@@ -727,7 +727,6 @@ addLayer("w", {
         if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
     },
     update(diff){if(!player.w.unlocked)return;player.w.v=player.w.v.plus(new Decimal(1).mul(x).pow(1.4).times(diff));},
-    startData(){return {v: new Decimal(0),unlocked:false,points:new Decimal(0)}},
     buyables: {
         11: {
             title: "Evaporation",
