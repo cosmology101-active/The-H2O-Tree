@@ -1,7 +1,7 @@
-# The-Modding-Tree
+# The-H2O-Tree
 
-An incremental game engine based on The Prestige Tree. It still requires programming knowledge, but it's mostly pretty easy things and copy/pasting.
+An incremental game engine based on The Prestige Tree and, you guessed it, H2O. It is always in development, unlike some other incrementals and has many features.
 
-[Look here for a tutorial on getting started with modding with TMT](docs/tutorials/getting-started.md)
+[Look here for a tutorial on making your own mod](docs/tutorials/getting-started.md)
 
-You can look in the [documentation](docs/!general-info.md) for more information on how it all works, or look at the code in layers.js to see what it all looks like.
+You can look in the [documentation](docs/!general-info.md) for more information on how it all works, or look at the code in the layers folder to see what it all looks like.
