@@ -45,7 +45,7 @@ addLayer("o", {
             description: "Oxygen boosts hydrogen gain",
             cost: new Decimal(2),
             effect() {
-                return player.o.points.add(1).pow(0.45)
+                return player.o.points.add(1).pow(0.45).sqrt()
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
@@ -67,7 +67,7 @@ addLayer("o", {
             description: "Oxygen boosts Oxygen gain",
             cost: new Decimal(30),
             effect() {
-                return player.o.points.add(2).pow(0.3)
+                return player.o.points.add(2).pow(0.3).log10()
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
@@ -78,7 +78,7 @@ addLayer("o", {
             description: "Oxygen boosts Carbon gain",
             cost: new Decimal(270),
             effect() {
-                return player.o.points.add(1).pow(0.15).times(4)
+                return player.o.points.add(1).pow(0.15).sqrt().times(4)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
