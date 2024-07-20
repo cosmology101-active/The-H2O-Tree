@@ -47,7 +47,7 @@ addLayer("w", {
             if (getBuyableAmount("w",11) !== 0) {
                 basegain = basegain.add(buyableEffect("w", 11))
             }
-            return; player.w.v = player.w.v.plus(new Decimal(0).plus(basegain).mul(mult).times(diff));
+            return; player.w.v = player.w.v.plus(new Decimal(0).plus(basegain).mul(vmult).times(diff));
         }
     },
     buyables: {
