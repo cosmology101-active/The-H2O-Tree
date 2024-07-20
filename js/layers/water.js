@@ -60,7 +60,7 @@ addLayer("w", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost());
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1));
             },
-            effect(x) { return new Decimal(1).mul(x).mul(2); },
+            effect(x) { return new Decimal(1).mul(getBuyableAmount(this.layer, this.id)).mul(2); },
         },
     },
     milestones: {
