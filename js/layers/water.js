@@ -7,7 +7,7 @@ addLayer("w", {
         return player[this.layer].points.sqrt().add(1);
     },
     effectDescription() {
-        return "which is boosting vapor generation by " + String(player[this.layer].points.sqrt().add(1).multiply(100).round().divide(100)) + "x";
+        return "which is generating water vapor at " + String(player[this.layer].points.mul(1.5).add(getBuyableAmount(this.layer, 11).mul(2))) + "/sec";
     },
     startData() { 
         return {
