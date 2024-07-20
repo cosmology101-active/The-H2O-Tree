@@ -67,7 +67,7 @@ addLayer("o", {
             description: "Oxygen boosts Oxygen gain",
             cost: new Decimal(30),
             effect() {
-                return player.o.points.add(2).pow(0.3).log10()
+                return player.o.points.add(2).pow(0.3).sqrt()
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
