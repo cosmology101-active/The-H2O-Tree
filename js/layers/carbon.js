@@ -53,7 +53,7 @@ addLayer("c", {
         },
     },
     layerShown() {
-        if (hasUpgrade("h",33)) {
+        if (hasUpgrade("h",34)) {
             return true
         } else {
             return false
