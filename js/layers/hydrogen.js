@@ -123,7 +123,7 @@ addLayer("h", {
             cost: new Decimal(5),
             effect() {
                 if (player.points.gte(1000000000)) {
-                    return player.points.log(1.0000001).sub(70000000)
+                    return player.points.log(1.0000000000001)
                 }
                 else {
                     return player.points.add(10).log10().pow(0.4)   
