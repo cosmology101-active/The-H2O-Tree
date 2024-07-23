@@ -111,7 +111,7 @@ addLayer("h", {
             description: "Boost vapor based on hydrogen currently owned.",
             cost: new Decimal(2),
             effect() {
-                return player[this.layer].points.add(1).pow(0.5).sqrt()
+                return player[this.layer].points.add(1).pow(0.5).sqrt().mul(2)
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x" 
