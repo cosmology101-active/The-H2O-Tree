@@ -45,7 +45,7 @@ addLayer("c", {
             description: "Carbon boosts generation of vapor",
             cost: new Decimal(2),
             effect() {
-                return player.points.add(1).pow(0.01)
+                return player.c.points.add(1).pow(0.01)
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
