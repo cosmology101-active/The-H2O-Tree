@@ -43,6 +43,9 @@ addLayer("w", {
     update(diff) {
         if(player.w.unlocked) {
             let basegain = player.w.points.mul(1.5);
+            if (basegain == 0) {
+                basegain = 1
+            }
             let vmult = new Decimal(1);
             if (getBuyableAmount("w",11) !== 0) {
                 basegain = basegain.add(buyableEffect("w", 11))
