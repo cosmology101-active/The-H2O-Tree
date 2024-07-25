@@ -41,7 +41,7 @@ addLayer("co", {
             description: "Carbon Dioxide boosts vapor and oxygen generation",
             cost: new Decimal(2),
             effect() {
-                return player.points.times(1.02).add(1).pow(0.2)
+                return player.co.points.times(1.02).add(1).pow(0.2)
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
@@ -63,7 +63,7 @@ addLayer("co", {
         0: {
             requirementDescription: "8 carbon dioxide",
             effectDescription: "keep carbon upgrades on reset",
-            done() { return player.w.points.gte(8) }
+            done() { return player.co.points.gte(8) }
         },
     },
     layerShown() { 
