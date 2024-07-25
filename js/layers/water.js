@@ -44,7 +44,7 @@ addLayer("w", {
         if(player.w.unlocked) {
             let basegain = player.w.points.mul(1.5);
             if (basegain == 0) {
-                basegain = 1
+                basegain = new Decimal(1)
             }
             let vmult = new Decimal(1);
             if (getBuyableAmount("w",11) !== 0) {
