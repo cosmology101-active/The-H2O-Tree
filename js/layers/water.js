@@ -55,7 +55,8 @@ addLayer("w", {
             if (tempvgain >= player.w.vgain) {
                 player.w.vgain = tempvgain
             }
-            return player.w.v = player.w.v.plus(player.w.vgain)
+            Decimal.set({ rounding: 1 })
+            return player.w.v = player.w.v.plus(Decimal.round(player.w.vgain))
         }
     },
     buyables: {
