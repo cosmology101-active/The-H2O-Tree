@@ -10,6 +10,7 @@ addLayer("w", {
         return "which is generating water vapor at " + String(player.w.vgain) + "/sec";
     },
     startData() { 
+        Decimal.set({ rounding: 2 }),
         return {
             unlocked: true,
             points: new Decimal(0),
@@ -55,7 +56,6 @@ addLayer("w", {
             if (tempvgain >= player.w.vgain) {
                 player.w.vgain = tempvgain
             }
-            Decimal.set({ rounding: 2 })
             return player.w.v = player.w.v.plus(Decimal.round(player.w.vgain))
         }
     },
