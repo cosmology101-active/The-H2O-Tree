@@ -10,7 +10,6 @@ addLayer("w", {
         return "which is generating water vapor at " + String(player.w.vgain) + "/sec";
     },
     startData() { 
-        Decimal.set({ rounding: 2 }),
         return {
             unlocked: true,
             points: new Decimal(0),
@@ -44,6 +43,9 @@ addLayer("w", {
     },
     update(diff) {
         if(player.w.unlocked) {
+            Decimal.set({ 
+                rounding: 2 
+            }),
             let basegain = player.w.points.mul(1.5);
             if (basegain == 0) {
                 basegain = new Decimal(1)
