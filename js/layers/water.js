@@ -15,7 +15,6 @@ addLayer("w", {
             points: new Decimal(0),
             v: new Decimal(0),
             vgain: new Decimal(0),
-            roundbool: new Decimal(0),
             dew: new Decimal(0),
         };
     },
@@ -44,10 +43,6 @@ addLayer("w", {
     },
     update(diff) {
         if(player.w.unlocked) {
-            if (player.w.roundbool == 0) {
-                Decimal.set({ rounding: 2 })
-                player.w.roundbool = new Decimal(1)
-            }
             let basegain = player.w.points.mul(1.5);
             if (basegain == 0) {
                 basegain = new Decimal(1)
