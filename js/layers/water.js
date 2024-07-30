@@ -7,7 +7,7 @@ addLayer("w", {
         return player[this.layer].points.sqrt().add(1);
     },
     effectDescription() {
-        return "which is generating water vapor at " + String(player.w.vgain) + "/sec";
+        return "which is generating water vapor at " + String(player.w.vgain.round()) + "/sec";
     },
     startData() { 
         return {
