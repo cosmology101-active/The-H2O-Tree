@@ -55,14 +55,14 @@ addLayer("w", {
             if (tempvgain >= player.w.vgain) {
                 player.w.vgain = tempvgain
             }
-            Decimal.set({ rounding: 1 })
+            Decimal.set({ rounding: 2 })
             return player.w.v = player.w.v.plus(Decimal.round(player.w.vgain))
         }
     },
     buyables: {
         11: {
             title: "Evaporation",
-            cost(x) { return new Decimal(1).mul(x).pow(1.3); },
+            cost(x) { return Decimal.round(x.pow(1.3)); },
             display() { return "Evaporate water and generate water vapor. \nCost: " + String(this.cost()) + "\nCurrently: " + String(buyableEffect("w", 11)) + " water vapor / tick"; },
             canAfford() { return player[this.layer].points.gte(this.cost()); },
             buy() {
