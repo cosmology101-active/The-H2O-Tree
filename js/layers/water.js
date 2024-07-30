@@ -51,7 +51,10 @@ addLayer("w", {
             if (getBuyableAmount("w",11) !== 0) {
                 basegain = basegain.add(buyableEffect("w", 11))
             }
-            player.w.vgain = new Decimal(0).plus(basegain).mul(vmult).times(diff)
+            let tempvgain = new Decimal(0).plus(basegain).mul(vmult).times(diff)
+            if (tempvgain >= player.w.vgain) {
+                player.w.vgain = tempvgain
+            }
             return player.w.v = player.w.v.plus(player.w.vgain)
         }
     },
