@@ -45,7 +45,7 @@ addLayer("w", {
         if(player.w.unlocked) {
             Decimal.set({ 
                 rounding: 2 
-            }),
+            });
             let basegain = player.w.points.mul(1.5);
             if (basegain == 0) {
                 basegain = new Decimal(1)
