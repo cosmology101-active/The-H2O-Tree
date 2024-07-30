@@ -7,7 +7,7 @@ addLayer("w", {
         return player[this.layer].points.sqrt().add(1);
     },
     effectDescription() {
-        return "which is generating water vapor at " + String(player[this.layer].points.mul(1.5).add(getBuyableAmount(this.layer, 11).mul(2))) + "/sec";
+        return "which is generating water vapor at " + String(player.w.points.mul(1.5).add(getBuyableAmount(this.layer, 11).mul(2))) + "/sec";
     },
     startData() { 
         return {
@@ -57,7 +57,7 @@ addLayer("w", {
         11: {
             title: "Evaporation",
             cost(x) { return new Decimal(1).mul(x).pow(1.3); },
-            display() { return "Evaporate water and generate water vapor. \nCurrently: " + buyableEffect("w", 11) + " water vapor / tick"; },
+            display() { return "Evaporate water and generate water vapor. \nCost: " + String(this.cost()) + "\nCurrently: " + String(buyableEffect("w", 11)) + " water vapor / tick"; },
             canAfford() { return player[this.layer].points.gte(this.cost()); },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost());
