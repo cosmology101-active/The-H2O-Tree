@@ -43,7 +43,7 @@ addLayer("w", {
     },
     update(diff) {
         if(player.w.unlocked) {
-            let basegain = player.w.points.mul(1.5);
+            let basegain = player.w.points.mul(0.1);
             if (basegain == 0) {
                 basegain = new Decimal(1)
             }
@@ -103,7 +103,7 @@ addLayer("w", {
                 "main-display",
                 "blank",
                 ["display-text",
-                    function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.4).add(9).log10()); },
+                    function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.5).add(9).log10()); },
                     { "font-size": "12px" },
                 ],
                 "blank",
