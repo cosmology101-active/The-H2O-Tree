@@ -7,13 +7,14 @@ addLayer("w", {
         return player[this.layer].points.sqrt().add(1);
     },
     effectDescription() {
-        return "which is generating water vapor at " + String(player.w.points.mul(1.5).add(getBuyableAmount(this.layer, 11).mul(2))) + "/sec";
+        return "which is generating water vapor at " + String(player.w.gain) + "/sec";
     },
     startData() { 
         return {
             unlocked: true,
             points: new Decimal(0),
             v: new Decimal(0),
+            vgain: new Decimal(0),
             dew: new Decimal(0),
         };
     },
@@ -50,7 +51,8 @@ addLayer("w", {
             if (getBuyableAmount("w",11) !== 0) {
                 basegain = basegain.add(buyableEffect("w", 11))
             }
-            return; player.w.v = player.w.v.plus(new Decimal(0).plus(basegain).mul(vmult).times(diff));
+            player.w.vgain = new Decimal(0).plus(basegain).mul(vmult).times(diff)
+            return player.w.v = player.w.v.plus(player.w.vgain)
         }
     },
     buyables: {
