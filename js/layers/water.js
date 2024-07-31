@@ -41,21 +41,32 @@ addLayer("w", {
         let keep=[];
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep);
         if (layers[resettingLayer].row > this.row){player.w.v=new Decimal(0);}
+        if (layers[resettingLayer].row > this.row){player.w.dew=new Decimal(0);}
     },
     update(diff) {
         if(player.w.unlocked) {
-            let basegain = player.w.points.mul(0.1);
-            if (basegain == 0) {
-                basegain = new Decimal(1)
+            let vbasegain = player.w.points.mul(0.1);
+            let dbasegain = new Decimal(0)
+            if (vbasegain == 0) {
+                vbasegain = new Decimal(1)
             }
             let vmult = new Decimal(1);
+            let dmult = new Decimal(1);
             if (getBuyableAmount("w",11) !== 0) {
-                basegain = basegain.add(buyableEffect("w", 11))
+                vbasegain = vbasegain.add(buyableEffect("w", 11))
             }
-            let tempvgain = new Decimal(0).plus(basegain).mul(vmult).times(diff)
+            if (getBuyableAmount("w",12) !== 0) {
+                vbasegain = vbasegain.add(buyableEffect("w", 12))
+            }
+            let tempvgain = new Decimal(0).plus(vbasegain).mul(vmult).times(diff)
+            let tempdgain = new Decimal(0).plus(dbasegain).mul(dmult).times(diff)
             if (tempvgain >= player.w.vgain) {
                 player.w.vgain = tempvgain
             }
+            if (tempvgain >= player.w.dgain) {
+                player.w.dgain = tempdgain
+            }
+            player.w.dew = player.w.dew.plus(player.w.dgain.round())
             return player.w.v = player.w.v.plus(player.w.vgain.round())
         }
     },
@@ -71,17 +82,28 @@ addLayer("w", {
             },
             effect(x) { return new Decimal(1).mul(getBuyableAmount(this.layer, this.id)).mul(2); },
         },
+        12: {
+            title: "Condensation",
+            cost(x) { return new Decimal(1.2).mul(x).pow(1.3).round(); },
+            display() { return "Condense water and generate dew. \nCost: " + String(this.cost()) + "\nCurrently: +" + String(buyableEffect("w", 11)) + " dew / tick"; },
+            canAfford() { return player[this.layer].points.gte(this.cost()); },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost());
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1));
+            },
+            effect(x) { return new Decimal(1).mul(getBuyableAmount(this.layer, this.id)).pow(1.1); },
+        },
     },
     milestones: {
         0: {
-            requirementDescription: "5 water",
+            requirementDescription: "3 water",
             effectDescription: "keep hydrogen upgrades on reset",
-            done() { return player.w.points.gte(5); },
+            done() { return player.w.points.gte(3); },
         },
         1: {
-            requirementDescription: "10 water",
+            requirementDescription: "8 water",
             effectDescription: "keep oxygen upgrades on reset",
-            done() { return player.w.points.gte(10); },
+            done() { return player.w.points.gte(8); },
         },
     },
     tabFormat: {
@@ -105,6 +127,16 @@ addLayer("w", {
                 "blank",
                 ["display-text",
                     function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.45).add(9).cbrt()); },
+                    { "font-size": "12px" },
+                ],
+                "blank",
+                ["display-text",
+                    function() { return 'You have ' + format(player.w.dew) + ' dew, boosting hydrogen generation by ' + format(player.w.dew.sqrt()); },
+                    { "font-size": "12px" },
+                ],
+                "blank",
+                ["display-text",
+                    function() { return 'You are generating ' + format(player.w.dgain) + ' dew every second'},
                     { "font-size": "12px" },
                 ],
                 "blank",
