@@ -56,7 +56,7 @@ addLayer("w", {
                 vbasegain = vbasegain.add(buyableEffect("w", 11))
             }
             if (getBuyableAmount("w",12) !== 0) {
-                vbasegain = vbasegain.add(buyableEffect("w", 12))
+                dbasegain = dbasegain.add(buyableEffect("w", 12))
             }
             let tempvgain = new Decimal(0).plus(vbasegain).mul(vmult).times(diff)
             let tempdgain = new Decimal(0).plus(dbasegain).mul(dmult).times(diff)
