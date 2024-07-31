@@ -57,7 +57,7 @@ function getPointGen() {
 	if (hasUpgrade('h', 22)) gain = gain.times(upgradeEffect('h', 22))
 	if (hasUpgrade('h', 23)) gain = gain.times(upgradeEffect('h', 23))
 	if (hasUpgrade('o', 12)) gain = gain.times(upgradeEffect('o', 12))
-	if (layerunlocked("w") && player.w.v.gte(1)) gain = gain.times(player.w.v.pow(0.45).add(9).cbrt())
+	if (layerunlocked("w") && player.w.v.gte(1)) gain = gain.times(player.w.v.pow(0.15))
 	if (hasUpgrade('co', 11)) gain = gain.times(upgradeEffect("co",11))
 	//POWERS
 	if (hasUpgrade('h', 31)) gain = gain.pow(upgradeEffect('h' , 31))
