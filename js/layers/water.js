@@ -66,8 +66,9 @@ addLayer("w", {
             if (tempvgain >= player.w.dgain) {
                 player.w.dgain = tempdgain
             }
+            return;
             player.w.dew = player.w.dew.plus(player.w.dgain.round())
-            return player.w.v = player.w.v.plus(player.w.vgain.round())
+            player.w.v = player.w.v.plus(player.w.vgain.round())
         }
     },
     buyables: {
