@@ -44,32 +44,30 @@ addLayer("w", {
         if (layers[resettingLayer].row > this.row){player.w.dew=new Decimal(0);}
     },
     update(diff) {
-        if(player.w.unlocked) {
-            let vbasegain = player.w.points.mul(0.1);
-            let dbasegain = new Decimal(0)
-            if (vbasegain == 0) {
-                vbasegain = new Decimal(1)
-            }
-            let vmult = new Decimal(1);
-            let dmult = new Decimal(1);
-            if (getBuyableAmount("w",11) !== 0) {
-                vbasegain = vbasegain.add(buyableEffect("w", 11))
-            }
-            if (getBuyableAmount("w",12) !== 0) {
-                dbasegain = dbasegain.add(buyableEffect("w", 12))
-            }
-            let tempvgain = new Decimal(0).plus(vbasegain).mul(vmult).times(diff)
-            let tempdgain = new Decimal(0).plus(dbasegain).mul(dmult).times(diff)
-            if (tempvgain >= player.w.vgain) {
-                player.w.vgain = tempvgain
-            }
-            if (tempdgain >= player.w.dgain) {
-                player.w.dgain = tempdgain
-            }
-            return;
-            player.w.dew = player.w.dew.plus(player.w.dgain.round());
-            player.w.v = player.w.v.plus(player.w.vgain.round());
+        if(!player.w.unlocked) return;
+        let vbasegain = player.w.points.mul(0.1);
+        let dbasegain = new Decimal(0)
+        if (vbasegain == 0) {
+            vbasegain = new Decimal(1)
         }
+        let vmult = new Decimal(1);
+        let dmult = new Decimal(1);
+        if (getBuyableAmount("w",11) !== 0) {
+            vbasegain = vbasegain.add(buyableEffect("w", 11))
+        }
+        if (getBuyableAmount("w",12) !== 0) {
+            dbasegain = dbasegain.add(buyableEffect("w", 12))
+        }
+        let tempvgain = new Decimal(0).plus(vbasegain).mul(vmult).times(diff)
+        let tempdgain = new Decimal(0).plus(dbasegain).mul(dmult).times(diff)
+        if (tempvgain >= player.w.vgain) {
+            player.w.vgain = tempvgain
+        }
+        if (tempdgain >= player.w.dgain) {
+            player.w.dgain = tempdgain
+        }
+        player.w.dew = player.w.dew.plus(player.w.dgain.round());
+        player.w.v = player.w.v.plus(player.w.vgain.round());
     },
     buyables: {
         11: {
