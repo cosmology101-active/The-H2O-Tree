@@ -16,6 +16,7 @@ addLayer("w", {
             v: new Decimal(0),
             vgain: new Decimal(0),
             dew: new Decimal(0),
+            dgain: new Decimal(0),
         };
     },
     color: "#88BBFF",
