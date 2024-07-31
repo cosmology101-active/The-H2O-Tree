@@ -63,7 +63,7 @@ addLayer("w", {
             if (tempvgain >= player.w.vgain) {
                 player.w.vgain = tempvgain
             }
-            if (tempvgain >= player.w.dgain) {
+            if (tempdgain >= player.w.dgain) {
                 player.w.dgain = tempdgain
             }
             return;
