@@ -67,8 +67,8 @@ addLayer("w", {
                 player.w.dgain = tempdgain
             }
             return;
-            player.w.dew = player.w.dew.plus(player.w.dgain.round())
-            player.w.v = player.w.v.plus(player.w.vgain.round())
+            player.w.dew = player.w.dew.plus(player.w.dgain.round());
+            player.w.v = player.w.v.plus(player.w.vgain.round());
         }
     },
     buyables: {
