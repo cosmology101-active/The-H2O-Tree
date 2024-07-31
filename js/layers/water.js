@@ -125,7 +125,7 @@ addLayer("w", {
                 "main-display",
                 "blank",
                 ["display-text",
-                    function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.15); },
+                    function() { return 'You have ' + format(player.w.v) + ' water vapor, boosting vapor generation by ' + format(player.w.v.pow(0.15)); },
                     { "font-size": "12px" },
                 ],
                 ["display-text",
