@@ -28,7 +28,7 @@ addLayer("h", {
         if (hasUpgrade('o', 11)) {
             mult = mult.times(upgradeEffect('o', 11))
         }
-        if (layerShown("w")) {
+        if (layerShown("w") && player.w.dew !== 0) {
             mult = mult.times(player.w.dew.sqrt())
         }
         return mult
