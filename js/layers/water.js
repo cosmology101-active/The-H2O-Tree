@@ -66,10 +66,6 @@ addLayer("w", {
         if (tempdgain >= player.w.dgain) {
             player.w.dgain = tempdgain
         }
-        if (player.w.points == 0) {
-            player.w.vgain = new Decimal(0)
-            player.w.dgain = new Decimal(0)
-        }
         player.w.dew = player.w.dew.plus(player.w.dgain.round());
         player.w.v = player.w.v.plus(player.w.vgain.round());
     },
