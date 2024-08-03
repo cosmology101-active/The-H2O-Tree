@@ -17,7 +17,6 @@ addLayer("w", {
             vgain: new Decimal(0),
             dew: new Decimal(0),
             dgain: new Decimal(0),
-            diff: 0 //test
         };
     },
     color: "#88BBFF",
@@ -67,9 +66,8 @@ addLayer("w", {
         if (tempdgain >= player.w.dgain) {
             player.w.dgain = tempdgain
         }
-        player.w.dew = player.w.dew.plus(player.w.dgain.round());
-        player.w.v = player.w.v.plus(player.w.vgain.round());
-        player.w.diff = diff;
+        player.w.dew = player.w.dew.plus(player.w.dgain);
+        player.w.v = player.w.v.plus(player.w.vgain);
     },
     buyables: {
         11: {
