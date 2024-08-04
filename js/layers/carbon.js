@@ -84,7 +84,7 @@ addLayer("c", {
                 return player.co.points.add(1).pow(0.01)
             },
             effectDisplay() { 
-                return "^" + format(upgradeEffect(this.layer, this.id))
+                return format(upgradeEffect(this.layer, this.id)) + "x"
             },
         },
     },
