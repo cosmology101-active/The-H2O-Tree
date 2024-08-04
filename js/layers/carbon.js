@@ -76,6 +76,17 @@ addLayer("c", {
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
         },
+        21: {
+            title: " An Efficient Carbonation",
+            description: "Carbon boosts it's own gain",
+            cost: new Decimal(60),
+            effect() {
+                return player.co.points.add(1).pow(0.01)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+        },
     },
     layerShown() {
         if (hasUpgrade("h",34)) {
