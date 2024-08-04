@@ -62,6 +62,17 @@ addLayer("c", {
                 return format(upgradeEffect(this.layer, this.id)) + "x"
             },
         },
+        13: {
+            title: "Volcanic Generation",
+            description: "Carbon boosts it's own gain",
+            cost: new Decimal(25),
+            effect() {
+                return player.c.points.add(1).pow(0.01)
+            },
+            effectDisplay() { 
+                return "^" + format(upgradeEffect(this.layer, this.id))
+            },
+        },
     },
     layerShown() {
         if (hasUpgrade("h",34)) {
