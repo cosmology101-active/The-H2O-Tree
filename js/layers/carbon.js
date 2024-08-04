@@ -78,7 +78,7 @@ addLayer("c", {
         },
         21: {
             title: " An Efficient Carbonation",
-            description: "Carbon boosts it's own gain",
+            description: "Carbon boosts carbon dioxide gain",
             cost: new Decimal(60),
             effect() {
                 return player.co.points.add(1).pow(0.01)
