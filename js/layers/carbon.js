@@ -51,6 +51,17 @@ addLayer("c", {
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
         },
+        12: {
+            title: "Firey Potential",
+            description: "Carbon boosts oxygen gain",
+            cost: new Decimal(8),
+            effect() {
+                return player.c.points.add(1).pow(0.02)
+            },
+            effectDisplay() { 
+                return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+        },
     },
     layerShown() {
         if (hasUpgrade("h",34)) {
