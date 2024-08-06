@@ -72,18 +72,18 @@ addLayer("w", {
     buyables: {
         11: {
             title: "Evaporation",
-            cost(x) { return new Decimal(1).mul(x).pow(1.3).round(); },
+            cost(x) { return new Decimal(1).mul(x.add(1)).pow(1.3).round(); },
             display() { return "Evaporate water and boost generatation of water vapor. \nCost: " + String(this.cost()) + "\nCurrently: +" + String(buyableEffect("w", 11)) + " water vapor / sec"; },
             canAfford() { return player[this.layer].points.gte(this.cost()); },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost());
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1));
             },
-            effect(x) { return new Decimal(1).mul(getBuyableAmount(this.layer, this.id)).mul(2); },
+            effect(x) { return new Decimal(1).mul(getBuyableAmount(this.layer, this.id))).mul(2); },
         },
         12: {
             title: "Condensation",
-            cost(x) { return new Decimal(1.2).mul(x).pow(1.3).round(); },
+            cost(x) { return new Decimal(1.2).mul(x.add(1)).pow(1.3).round(); },
             display() { return "Condense water and generate dew. \nCost: " + String(this.cost()) + "\nCurrently: +" + String(buyableEffect("w", 12)) + " dew / sec"; },
             canAfford() { return player[this.layer].points.gte(this.cost()); },
             buy() {
