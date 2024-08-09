@@ -29,7 +29,7 @@ addLayer("h", {
             mult = mult.times(upgradeEffect('o', 11))
         }
         if (layerShown("w") && player.w.dew !== 0) {
-            mult = mult.times(player.w.dew.sqrt())
+            mult = mult.times(player.w.dew.plus(1).sqrt())
         }
         return mult
     },
