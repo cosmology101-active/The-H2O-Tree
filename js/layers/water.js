@@ -136,7 +136,7 @@ addLayer("w", {
                     { "font-size": "12px" },
                 ],
                 ["display-text",
-                    function() { return 'You have ' + format(player.w.dew) + ' dew, boosting hydrogen generation by ' + format(player.w.dew.sqrt()); },
+                    function() { return 'You have ' + format(player.w.dew) + ' dew, boosting hydrogen generation by ' + format(player.w.dew.plus(1).sqrt()); },
                     { "font-size": "12px" },
                 ],
                 ["display-text",
