@@ -1,52 +1,16 @@
 addLayer("d", {
     name: "discovery", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: `<img src="resources/icon/sciencebeaker.png" alt="D" class="icon-img">`, // This appears on the layer's node. Default is the id with the first letter capitalized.
-    position: "side", // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
+    position: 1, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     startData() { 
         return {
             unlocked: true,
             points: new Decimal(0),
         }
     },
-    color: "#B4DCDF",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account.
-    resource: "hydrogen", // Name of prestige currency.
-    baseResource: "vapor", // Name of resource prestige is based on.
-    baseAmount() { return player.points }, // Get the current amount of baseResource.
-    type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
-    exponent: 0.5, // Prestige currency exponent.
-    softcap: new Decimal(1e9),
-    softcapPower: new Decimal(0.04),
-    gainMult() { // Calculate the multiplier for main currency from bonuses.
-        let mult = new Decimal(1)
-        if (hasUpgrade('h', 13)) {
-            mult = mult.times(upgradeEffect('h', 13))
-        }
-        if (hasUpgrade('h', 23)) {
-            mult = mult.times(0.95)
-        }
-        if (hasUpgrade('o', 11)) {
-            mult = mult.times(upgradeEffect('o', 11))
-        }
-        if (layerShown("w") && player.w.dew !== 0) {
-            mult = mult.times(player.w.dew.plus(1).sqrt())
-        }
-        return mult
-    },
-    gainExp() { // Calculate the exponent on main currency from bonuses.
-        return new Decimal(1)
-    },
-    doReset(resettingLayer){
-        let keep=[]
-        if (hasMilestone("w",0)){
-            // keep.push("milestones")
-            keep.push("upgrades")
-        }
-        if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
-        if (layerShown("n") || layerShown("w") || layerShown("c") || layerShown("nh") || layerShown("co")){
-            player.h.upgrades = player.h.upgrades.concat([31,32,33,34])
-        }
-    },
+    color: "#8C62EC",
+    resource: "discoveries", // Name of prestige currency.
+    type: "none", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     bars: {
         0: {
             direction: RIGHT,
@@ -148,9 +112,6 @@ addLayer("d", {
     },
     tabFormat: {
         "Discovery": {
-            unlocked() {
-                return (hasUpgrade("h", 21) || hasAchievement("a", 11))
-            },
             content: [
                 "main-display",
                 "blank",
@@ -161,6 +122,6 @@ addLayer("d", {
             ]
         },
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row).
-    layerShown() { return true }
+    row: "side", // Row the layer is in on the tree (0 is the first row).
+    layerShown() { return (hasUpgrade("h", 21) || hasAchievement("a", 11)) }
 })
