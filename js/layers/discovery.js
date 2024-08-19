@@ -26,9 +26,9 @@ addLayer("d", {
                 "color": "#B4DCDF"
             },
             progress() { 
-                if (!hasUpgrade("h",33)) {
+                if (!hasAchievement("h",33)) {
                     return player.h.points.divide(100)
-                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
+                } else if (hasAchievement("h",33) && !hasAchievement("h",34)) {
                     if (player.h.points.gt(300) && player.o.points.gt(300)) {
                         return new Decimal(1)
                     } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
@@ -38,7 +38,7 @@ addLayer("d", {
                     } else {
                         return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                     }
-                } else if (hasUpgrade("h",34)) {
+                } else if (hasAchievement("h",34)) {
                     if (player.w.points.gt(50)) {
                         return new Decimal(1)
                     } else {
@@ -49,11 +49,11 @@ addLayer("d", {
                 }
             },
             display() {
-                if (!hasUpgrade("h",33)) {
+                if (!hasAchievement("h",33)) {
                     return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
+                } else if (hasAchievement("h",33) && !hasAchievement("h",34)) {
                     return "Reach 300 Hydrogen and Oxygen to unlock next reward"
-                } else if (hasUpgrade("h",34)) {
+                } else if (hasAchievement("h",34)) {
                     return "Reach 50 Water to unlock next reward"
                 } else {
                     return "Complete"
@@ -115,8 +115,7 @@ addLayer("d", {
             content: [
                 "main-display",
                 "blank",
-                ["bar", "0"],
-                "blank",
+                "bars",
                 "blank",
                 "upgrades",
             ]
