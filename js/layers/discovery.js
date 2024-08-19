@@ -68,6 +68,9 @@ addLayer("d", {
         11: {
             title: "Triple Alpha Process",
             description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
+            currencyLayer: "h",
+            currencyInternalName: "points",
+            currencyDisplayName: "hydrogen",
             cost: new Decimal(150),
             effect() {
                 return player.h.points.add(1).pow(0.1)
@@ -82,6 +85,9 @@ addLayer("d", {
         12: {
             title: "Proton-Proton",
             description: "Unlock another way to create energy from pure hydrogen. Boost vapor gain by 3x",
+            currencyLayer: "h",
+            currencyInternalName: "points",
+            currencyDisplayName: "hydrogen",
             cost: new Decimal(255),
             effect() {
                 return new Decimal(3)
@@ -96,6 +102,9 @@ addLayer("d", {
         13: {
             title: "Stellar Fusion",
             description: "Using the same process as a supernova this will unlock...",
+            currencyLayer: "h",
+            currencyInternalName: "points",
+            currencyDisplayName: "hydrogen",
             cost: new Decimal(550),
             unlocked() {
                 return hasUpgrade("h",32)
@@ -104,6 +113,9 @@ addLayer("d", {
         14: {
             title: "CNO Cycle",
             description: "Using the CNO cycle of stars we can find new elements.",
+            currencyLayer: "h",
+            currencyInternalName: "points",
+            currencyDisplayName: "hydrogen",
             cost: new Decimal(2250),
             unlocked() {
                 return hasAchievement("a", 21)
