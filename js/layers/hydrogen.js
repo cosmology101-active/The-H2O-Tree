@@ -47,59 +47,6 @@ addLayer("h", {
             player.h.upgrades = player.h.upgrades.concat([31,32,33,34])
         }
     },
-    bars: {
-        0: {
-            direction: RIGHT,
-            width: 600,
-            height: 50,
-            textStyle: {
-                "color": "#009918"
-            },
-            baseStyle: {
-                "color": "#272727"
-            },
-            fillStyle: {
-                "color": "#B4DCDF"
-            },
-            progress() { 
-                if (!hasUpgrade("h",33)) {
-                    return player.h.points.divide(100)
-                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
-                    if (player.h.points.gt(300) && player.o.points.gt(300)) {
-                        return new Decimal(1)
-                    } else if (player.h.points.gt(300) && !player.o.points.gt(300)) {
-                        return player.o.points.divide(300).divide(2).add(0.5)
-                    } else if (player.o.points.gt(300) && !player.h.points.gt(300)) {
-                        return player.h.points.divide(300).divide(2).add(0.5)
-                    } else {
-                        return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
-                    }
-                } else if (hasUpgrade("h",34)) {
-                    if (player.w.points.gt(50)) {
-                        return new Decimal(1)
-                    } else {
-                        return player.w.points.divide(50)
-                    }
-                } else {
-                    return new Decimal(0)
-                }
-            },
-            display() {
-                if (!hasUpgrade("h",33)) {
-                    return "Reach 100 Hydrogen to unlock next reward"
-                } else if (hasUpgrade("h",33) && !hasUpgrade("h",34)) {
-                    return "Reach 300 Hydrogen and Oxygen to unlock next reward"
-                } else if (hasUpgrade("h",34)) {
-                    return "Reach 50 Water to unlock next reward"
-                } else {
-                    return "Complete"
-                }
-            },
-            unlocked() {
-                return true
-            }
-        },
-    },
     upgrades: {
         11: {
             title: "Basic Boost",
@@ -202,79 +149,6 @@ addLayer("h", {
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
             },
-        },
-        31: {
-            title: "Triple Alpha Process",
-            description: "Fuse three hydrogens to obtain the exotic...He, creating much energy in the process.",
-            cost: new Decimal(150),
-            effect() {
-                return player.h.points.add(1).pow(0.1)
-            },
-            effectDisplay() { 
-                return "^" + format(upgradeEffect(this.layer, this.id))
-            },
-            unlocked() {
-                return hasAchievement("a", 12)
-            },
-        },
-        32: {
-            title: "Proton-Proton",
-            description: "Unlock another way to create energy from pure hydrogen. Boost vapor gain by 3x",
-            cost: new Decimal(255),
-            effect() {
-                return new Decimal(3)
-            },
-            effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x"
-            },
-            unlocked() {
-                return hasUpgrade("h",31)
-            },
-        },
-        33: {
-            title: "Stellar Fusion",
-            description: "Using the same process as a supernova this will unlock...",
-            cost: new Decimal(550),
-            unlocked() {
-                return hasUpgrade("h",32)
-            },
-        },
-        34: {
-            title: "CNO Cycle",
-            description: "Using the CNO cycle of stars we can find new elements.",
-            cost: new Decimal(2250),
-            unlocked() {
-                return hasAchievement("a", 21)
-            },
-        },
-    },
-    tabFormat: {
-        "Hydrogen": {
-            content: [
-                "main-display",
-                "prestige-button",
-                "blank",
-                "display-text",
-                "blank",
-                "milestones",
-                "blank",
-                "blank",
-                ["upgrades", "1"],
-                ["upgrades", "2"]
-            ]
-        },
-        "Discovery": {
-            unlocked() {
-                return (hasUpgrade("h", 21) || hasAchievement("a", 11))
-            },
-            content: [
-                "main-display",
-                "blank",
-                ["bar", "0"],
-                "blank",
-                "blank",
-                ["upgrades", "3"]
-            ]
         },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row).
