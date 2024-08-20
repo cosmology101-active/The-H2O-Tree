@@ -43,9 +43,6 @@ addLayer("h", {
             keep.push("upgrades")
         }
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
-        if (layerShown("n") || layerShown("w") || layerShown("c") || layerShown("nh") || layerShown("co")){
-            player.h.upgrades = player.h.upgrades.concat([31,32,33,34])
-        }
     },
     upgrades: {
         11: {
