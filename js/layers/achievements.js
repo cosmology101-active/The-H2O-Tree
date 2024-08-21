@@ -144,7 +144,7 @@ addLayer("a", {
         22: {
             name: "CNO Death Star",
             done() {
-                if (hasUpgrade("h",34)) {
+                if (hasUpgrade("d",14)) {
                     return true
                 }
                 else {
