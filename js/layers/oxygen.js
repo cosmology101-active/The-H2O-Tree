@@ -97,5 +97,5 @@ addLayer("o", {
     },
     layerShown() { 
         if (hasUpgrade("d",13) || hasAchievement("a",13))
-    }
+    },
 })
