@@ -69,7 +69,7 @@ addLayer("n", {
         if(layers[resettingLayer].row>this.row) layerDataReset(this.layer,keep)
     },
     layerShown() {
-        if (hasUpgrade("h",34)) {
+        if (hasUpgrade("d",14)) {
             return true
         } else {
             return false
