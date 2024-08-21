@@ -89,7 +89,7 @@ addLayer("c", {
         },
     },
     layerShown() {
-        if (hasUpgrade("h",34)) {
+        if (hasUpgrade("d",14)) {
             return true
         } else {
             return false
