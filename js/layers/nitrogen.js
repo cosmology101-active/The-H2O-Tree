@@ -52,7 +52,7 @@ addLayer("n", {
             description: "Nirtogen boosts nitrogen gain.",
             cost: new Decimal(25),
             effect() {
-                return new player.n.points.add(1).pow(0.5)
+                return player.n.points.add(1).pow(0.5)
             },
         },
     },
