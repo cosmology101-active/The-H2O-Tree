@@ -13,7 +13,7 @@ addLayer("n", {
     requires: new Decimal(1), // Can be a function that takes requirement increases into account.
     resource: "nitrogen", // Name of prestige currency.
     baseResource: "100O,V", // Name of resource prestige is based on.
-    baseAmount() { if (player.points.lt(player.o.points.multiply(100))) return player.points
+    baseAmount() { if (player.points.lt(player.o.points.mul(100))) return player.points
                  return player.o.points.multiply(100) 
     }, // Get the current amount of baseResource.
     type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
