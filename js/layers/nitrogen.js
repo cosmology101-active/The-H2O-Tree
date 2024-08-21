@@ -36,7 +36,7 @@ addLayer("n", {
             description: "Multiplies Hydrogen gain by 35",
             cost: new Decimal(5),
             effect() {
-                return new Decimml(35)
+                return new Decimal(35)
             },
         },
          12: {
