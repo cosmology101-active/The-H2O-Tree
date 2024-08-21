@@ -1,5 +1,5 @@
 function barProgress(layer, id) {
-	return (tmp[layer].bars[id].progress())
+	return (tmp[layer].bars[id].progress)
 }
 
 function hasUpgrade(layer, id) {
