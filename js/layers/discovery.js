@@ -96,7 +96,7 @@ addLayer("d", {
                 return format(upgradeEffect(this.layer, this.id)) + "x"
             },
             unlocked() {
-                return hasUpgrade("h",31)
+                return hasUpgrade("d",11)
             },
         },
         13: {
@@ -107,7 +107,7 @@ addLayer("d", {
             currencyDisplayName: "hydrogen",
             cost: new Decimal(550),
             unlocked() {
-                return hasUpgrade("h",32)
+                return hasUpgrade("d",12)
             },
         },
         14: {
