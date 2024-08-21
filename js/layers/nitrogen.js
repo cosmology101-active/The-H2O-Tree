@@ -20,6 +20,7 @@ addLayer("n", {
     exponent: 0.2, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
+        if (hasUpgrade("n",21)) { mult = mult.mul(upgradeEffect("n",21))}
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses.
@@ -35,7 +36,7 @@ addLayer("n", {
             description: "Multiplies Hydrogen gain by 35",
             cost: new Decimal(5),
             effect() {
-                return player.h.points.add(1).pow(0.25)
+                return new Decimml(35)
             },
         },
          12: {
