@@ -1,3 +1,7 @@
+function barProgress(layer, id) {
+	return (tmp[layer].bars[id].progress())
+}
+
 function hasUpgrade(layer, id) {
 	return ((player[layer].upgrades.includes(toNumber(id)) || player[layer].upgrades.includes(id.toString())) && !tmp[layer].deactivated)
 }
