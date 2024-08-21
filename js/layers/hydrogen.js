@@ -19,10 +19,10 @@ addLayer("h", {
     softcapPower: new Decimal(0.04),
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1)
-        if (hasUpgrade('h', 13)) {
-            mult = mult.times(upgradeEffect('h', 13))
+        if (hasUpgrade("h", 13)) {
+            mult = mult.times(upgradeEffect("h", 13))
         }
-        if (hasUpgrade('h', 23)) {
+        if (hasUpgrade("h", 23)) {
             mult = mult.times(0.95)
         }
         if (hasUpgrade('o', 11)) {
