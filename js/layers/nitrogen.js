@@ -35,7 +35,7 @@ addLayer("n", {
             description: "Multiplies Hydrogen gain by 35",
             cost: new Decimal(5),
             effect() {
-                return player.o.points.add(1).pow(0.25)
+                return player.h.points.add(1).pow(0.25)
             },
         },
          12: {
@@ -44,6 +44,14 @@ addLayer("n", {
             cost: new Decimal(15),
             effect() {
                 return new Decimal(1.5)
+            },
+        },
+          21: {
+            title: "Essential Fuel",
+            description: "Nirtogen boosts nitrogen gain.",
+            cost: new Decimal(25),
+            effect() {
+                return new player.n.points.add(1).pow(0.5)
             },
         },
     },
