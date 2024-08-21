@@ -96,7 +96,7 @@ addLayer("o", {
         },
     },
     layerShown() { 
-        if (hasUpgrade("h",33) || hasAchievement("a",13)) { return true }
+        if (hasUpgrade("d",13) || hasAchievement("a",13)) { return true }
         else { return false }
     }
 })
