@@ -5,7 +5,7 @@ let modInfo = {
 	pointsName: "vapor",
 	modFiles: ["layers/achievements.js", "layers/hydrogen.js", "layers/oxygen.js", 
 		   "layers/nitrogen.js", "layers/carbon.js", "layers/water.js", 
-		   "layers/ammonia.js", "layers/carbondioxide.js", "tree.js"],
+		   "layers/ammonia.js", "layers/carbondioxide.js","layers/discovery.js", "tree.js"],
 	discordName: "",
 	discordLink: "",
 	initialStartPoints: new Decimal (10), // Used for hard resets and new players
