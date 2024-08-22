@@ -12,6 +12,7 @@ addLayer("d", {
     color: "#8C62EC",
     resource: "discoveries", // Name of prestige currency.
     type: "none", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
+    layerShown() { return (hasUpgrade("h", 21) || hasAchievement("a", 11)) },
     bars: {
         0: {
             direction: RIGHT,
@@ -129,5 +130,4 @@ addLayer("d", {
     "blank",
     "upgrades",
     ],
-    layerShown() { return (hasUpgrade("h", 21) || hasAchievement("a", 11)) }
 })
