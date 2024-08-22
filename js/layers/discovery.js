@@ -38,7 +38,7 @@ addLayer("d", {
                     } else {
                         return player.h.points.divide(300).divide(2).add(player.o.points.divide(300).divide(2))
                     }
-                } else if (hasAchievement("d",14)) {
+                } else if (hasUpgrade("d",14)) {
                     if (player.w.points.gt(50)) {
                         return new Decimal(1)
                     } else {
