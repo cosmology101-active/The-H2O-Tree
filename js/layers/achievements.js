@@ -19,7 +19,7 @@ addLayer("a", {
         11: {
             name: "Science!",
             done() {
-                if (hasUpgrade("h",21)) {
+                if (hasUpgrade("h",24)) {
                     return true
                 }
                 else {
