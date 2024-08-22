@@ -10,7 +10,7 @@ addLayer("d", {
     },
     color: "#8C62EC",
     resource: "discoveries", // Name of prestige currency.
-    type: "none", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
+    type: "custom", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     bars: {
         0: {
             direction: RIGHT,
