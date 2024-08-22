@@ -122,6 +122,12 @@ addLayer("d", {
             },
         },
     },
+    tabFormat: [
+    "main-display",
+    "bars",
+    "blank",
+    "upgrades",
+    ],
     row: "side", // Row the layer is in on the tree (0 is the first row).
     layerShown() { return (hasUpgrade("h", 21) || hasAchievement("a", 11)) }
 })
