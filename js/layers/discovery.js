@@ -14,6 +14,9 @@ addLayer("d", {
     canReset() {
         return false
     },
+    getNextAt(canMax=false) {
+        return new Decimal(1e2800)
+    },
     getResetGain() {
         return new Decimal(0)
     },
