@@ -1,7 +1,7 @@
 addLayer("d", {
     name: "discovery", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: "D", // This appears on the layer's node. Default is the id with the first letter capitalized.
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Beaker_for_Lab.png",
+    image: "resources/icon/sciencebeaker.png",
     position: 1, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
     startData() { 
         return {
