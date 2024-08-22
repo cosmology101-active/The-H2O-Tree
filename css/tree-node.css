@@ -112,3 +112,9 @@
 	max-width: 100px;
 	max-height: 100px;
 }
+
+.icon-img-small {
+	/*fix beeg icons*/
+	max-width: 50px;
+	max-height: 50px;
+}
