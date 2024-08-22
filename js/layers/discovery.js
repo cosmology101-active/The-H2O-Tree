@@ -12,6 +12,7 @@ addLayer("d", {
     color: "#8C62EC",
     resource: "discoveries", // Name of prestige currency.
     baseResource: "hydrogen",
+    baseAmount() { return player.h.points }
     requires: new Decimal(35),
     type: "none", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     bars: {
