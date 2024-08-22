@@ -11,6 +11,9 @@ addLayer("d", {
     color: "#8C62EC",
     resource: "discoveries", // Name of prestige currency.
     type: "custom", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
+    canReset() {
+        return false
+    },
     getResetGain() {
         return new Decimal(0)
     },
