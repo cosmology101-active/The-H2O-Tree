@@ -22,7 +22,7 @@ addLayer("h", {
         if (hasUpgrade("h", 13)) {
             mult = mult.times(upgradeEffect("h", 13))
         }
-        if (hasUpgrade("h", 23)) {
+        if (hasUpgrade("h", 22)) {
             mult = mult.times(0.95)
         }
         if (hasUpgrade('o', 11)) {
@@ -63,6 +63,9 @@ addLayer("h", {
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x" 
             },
+            unlocked() {
+                return hasUpgrade("h",11)
+            }
         },
         13: {
             title: "Higher Temperature",
@@ -79,16 +82,11 @@ addLayer("h", {
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x" 
             },
+            unlocked() {
+                return hasUpgrade("h",12)
+            }
         },
         21: {
-            title: "Nuclear Fusion",
-            description: "Successfully test fusion, fueling scientific discovery.",
-            cost: new Decimal(15),
-            unlocked() {
-                return true
-            },
-        },
-        22: {
             title: "Vapor Inertia",
             description: "Vapor gain slightly increased and raised to the power of ^1.02",
             currencyDisplayName: "hydrogen and 101 vapor",
@@ -101,8 +99,8 @@ addLayer("h", {
             },
             cost: new Decimal(10),
             effect() {
-                if (hasUpgrade("h", 24)) {
-                    return new Decimal(1.02).times(upgradeEffect("h", 24))
+                if (hasUpgrade("h", 23)) {
+                    return new Decimal(1.02).times(upgradeEffect("h", 23))
                 } else {
                     return new Decimal(1.02)
                 }
@@ -110,14 +108,25 @@ addLayer("h", {
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
             },
+            unlocked() {
+                return hasUpgrade("h",13)
+            }
         },
-        23: {
+        22: {
             title: "Gas Heating",
             description: "Use burning of hydrogen to fuel the heating of more vapor but consume hydrogen",
-            cost: new Decimal(60),
+            cost: new Decimal(22),
+            currencyDisplayName: "hydrogen and 222 vapor",
+            canAfford() {
+                return player.points.gte(222) && player.h.points.gte(22);
+            },
+            pay() {
+                player.h.points = player.h.points.minus(22)
+                player.points = player.points.minus(222)
+            },
             effect() {
-                if (hasUpgrade("h", 24)) {
-                    return player.h.points.add(1).pow(0.05).times(1.5).times(upgradeEffect("h", 24))
+                if (hasUpgrade("h", 23)) {
+                    return player.h.points.add(1).pow(0.05).times(1.5).times(upgradeEffect("h", 23))
                 } else {
                     return player.h.points.add(1).pow(0.05).times(1.5)
                 }
@@ -125,11 +134,14 @@ addLayer("h", {
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
             },
+            unlocked() {
+                return hasUpgrade("h",13)
+            }
         },
-        24: {
+        23: {
             title: "Row Synergy",
             description: "The number of upgrades in row 1 boosts row 2 upgrades",
-            cost: new Decimal(200),
+            cost: new Decimal(50),
             effect() {
                 let upgradeCount = new Decimal(0)
                 if (hasUpgrade("h", 11)) {
@@ -145,6 +157,17 @@ addLayer("h", {
             },
             effectDisplay() { 
                 return format(upgradeEffect(this.layer, this.id)) + "x"
+            },
+            unlocked() {
+                return hasUpgrade("h",13)
+            }
+        },
+        24: {
+            title: "Nuclear Fusion",
+            description: "Successfully test fusion, fueling scientific discovery...",
+            cost: new Decimal(95),
+            unlocked() {
+                return hasUpgrade("h",23)
             },
         },
     },
