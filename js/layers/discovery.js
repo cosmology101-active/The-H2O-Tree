@@ -2,6 +2,7 @@ addLayer("d", {
     name: "discovery", // This is optional, only used in a few places. If absent, it just uses the layer id.
     symbol: `<img src="resources/icon/sciencebeaker.png" alt="D" class="icon-img-small">`, // This appears on the layer's node. Default is the id with the first letter capitalized.
     position: 1, // Horizontal position within a row. By default, it uses the layer id and sorts in alphabetical order.
+    row: "side", // Row the layer is in on the tree (0 is the first row).
     startData() { 
         return {
             unlocked: true,
@@ -137,6 +138,5 @@ addLayer("d", {
     "blank",
     "upgrades",
     ],
-    row: "side", // Row the layer is in on the tree (0 is the first row).
     layerShown() { return (hasUpgrade("h", 21) || hasAchievement("a", 11)) }
 })
