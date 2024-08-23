@@ -49,10 +49,7 @@ addLayer("nh", {
             description: "Ammonia boosts water gain.",
             cost: new Decimal(5),
             effect() {
-                return player.w.points.times(1.02).add(1).pow(0.2)
-            },
-            effectDisplay() { 
-                return format(upgradeEffect(this.layer, this.id)) + "x"
+                return player.h.points.add(1).pow(0.1)
             },
         },
     },
