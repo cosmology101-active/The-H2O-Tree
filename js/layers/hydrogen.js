@@ -45,6 +45,7 @@ addLayer("h", {
             // keep.push("milestones")
             keep.push("upgrades")
         }
+        keep.push(["upgrades",24])
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
     },
     upgrades: {
@@ -170,7 +171,7 @@ addLayer("h", {
             description: "Successfully test fusion, fueling scientific discovery...",
             cost: new Decimal(95),
             unlocked() {
-                return hasUpgrade("h",23)
+                return hasUpgrade("h",23) || layerShown("w")
             },
         },
     },
