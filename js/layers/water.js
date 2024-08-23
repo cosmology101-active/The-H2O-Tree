@@ -30,6 +30,14 @@ addLayer("w", {
     }, // Get the current amount of baseResource.
     type: "static", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     exponent: 0.3, // Prestige currency exponent.
+    canBuyMax() {
+        if (hasMilestone("w", 2)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1);
         if (hasUpgrade("nh", 12)) {
@@ -107,6 +115,11 @@ addLayer("w", {
             requirementDescription: "8 water",
             effectDescription: "keep oxygen upgrades on reset",
             done() { return player.w.points.gte(8); },
+        },
+        2: {
+            requirementDescription: "10 water",
+            effectDescription: "you now buy max water",
+            done() { return player.w.points.gte(10); },
         },
     },
     tabFormat: {
