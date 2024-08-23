@@ -35,7 +35,7 @@ addLayer("nh", {
     upgrades: {
         11: {
             title: "Greenhouse gas",
-            description: "Carbon Dioxide boosts vapor and oxygen generation",
+            description: "Points boosts vapor and oxygen generation",
             cost: new Decimal(2),
             effect() {
                 return player.points.times(1.02).add(1).pow(0.2)
