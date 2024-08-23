@@ -12,7 +12,7 @@ addLayer("w", {
     },
     startData() { 
         return {
-            unlocked: true,
+            unlocked: false,
             points: new Decimal(0),
             v: new Decimal(0),
             vgain: new Decimal(0),
