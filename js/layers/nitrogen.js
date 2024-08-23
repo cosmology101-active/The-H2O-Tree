@@ -57,10 +57,10 @@ addLayer("n", {
         },
          22: {
             title: "Put on the Nitro!!!",
-            description: "Nirtogen boosts point gain.",
+            description: "Nirtogen boosts hydrogen gain.",
             cost: new Decimal(50),
             effect() {
-                return player.p.points.add(1).pow(0.1)
+                return player.h.points.add(1).pow(0.1)
             },
         },
     },
