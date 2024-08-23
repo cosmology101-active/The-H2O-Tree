@@ -75,7 +75,7 @@ addLayer("d", {
             currencyDisplayName: "hydrogen",
             cost: new Decimal(150),
             effect() {
-                return player.h.points.add(1).pow(0.1)
+                return player.h.points.add(1).pow(0.5).add(9).log10()
             },
             effectDisplay() { 
                 return "^" + format(upgradeEffect(this.layer, this.id))
