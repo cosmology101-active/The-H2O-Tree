@@ -21,15 +21,15 @@ addLayer("w", {
         };
     },
     color: "#88BBFF",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account.
+    requires: new Decimal(1000), // Can be a function that takes requirement increases into account.
     resource: "water", // Name of prestige currency.
     baseResource: "H,2O", // Name of resource prestige is based on.
     baseAmount() { 
         if (player.h.points.lt(player.o.points.multiply(2))) return player.h.points;
         return player.o.points.multiply(2);
     }, // Get the current amount of baseResource.
-    type: "normal", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
-    exponent: 0.5, // Prestige currency exponent.
+    type: "static", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
+    exponent: 0.3, // Prestige currency exponent.
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1);
         if (hasUpgrade("nh", 12)) {
