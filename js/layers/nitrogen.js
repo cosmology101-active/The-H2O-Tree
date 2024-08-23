@@ -55,6 +55,14 @@ addLayer("n", {
                 return player.n.points.add(1).pow(0.5)
             },
         },
+         22: {
+            title: "Put on the Nitro!!!",
+            description: "Nirtogen boosts point gain.",
+            cost: new Decimal(50),
+            effect() {
+                return player.p.points.add(1).pow(0.1)
+            },
+        },
     },
     milestones: {
         0: {
