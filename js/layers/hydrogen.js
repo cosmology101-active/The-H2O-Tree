@@ -45,8 +45,8 @@ addLayer("h", {
             // keep.push("milestones")
             keep.push("upgrades")
         }
-        keep.push(["upgrades",24])
         if (layers[resettingLayer].row > this.row) layerDataReset(this.layer, keep)
+        player.h.upgrades = player.h.upgrades.concat([24])
     },
     upgrades: {
         11: {
