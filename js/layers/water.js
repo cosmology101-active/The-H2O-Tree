@@ -37,7 +37,7 @@ addLayer("w", {
         else {
             return false
         }
-    }
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses.
         let mult = new Decimal(1);
         if (hasUpgrade("nh", 12)) {
