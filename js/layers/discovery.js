@@ -14,7 +14,7 @@ addLayer("d", {
     type: "none", // 'normal': cost to gain currency depends on amount gained. 'static': cost depends on how much you already have.
     layerShown() { return (hasUpgrade("h", 24) || hasAchievement("a", 11)) },
     bars: {
-        1: {
+        progressBar: {
             direction: RIGHT,
             width: 600,
             height: 50,
